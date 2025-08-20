@@ -1,0 +1,25 @@
+"jobs":
+  "apply-manifest":
+    "runs-on":
+    - "self-hosted"
+    - "solinas-ubuntu_22_04"
+    "steps":
+    - "name": "Setup Kube Context"
+      "uses": "azure/k8s-set-context@v4"
+      "with":
+        "kubeconfig": |
+          {"apiVersion":"v1","clusters":[{"cluster":{"certificate-authority-data":"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQ1akNDQWs2Z0F3SUJBZ0lRY0NMSkRaanUvS2syVnNwRnp3dFNZREFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB5TlRBNE1UZ3hOVEV4TVRsYUZ3MHpOVEE0TVRneE5URXlNVGxhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQm9qQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FZOEFNSUlCaWdLQ0FZRUE2ZWl2CmlBSmhEYnY4UWcxeVo4b3dqS2Vjcml4Y0dMbEJLa2kvMC9qd2I0UlBYWGEydXhXQ1BkaWt6K3U0eGhWMnBjRm4KWTUrd1FCbGNWZlFGZjVYNFZKRm9kMjRweHh4OElNN3N3OHYxbHlkRmhIODZjRVdOMTNNM0dLZlRyWW9mNzJmZQpMcE10OWYyeDBHMFZkV21zTDludkErdnV1OUR2MmdUbWpKaWQrRk4zeG52OEUvUjVZL2w3eXVxUlMrbnpZZ2JMCkFiS2M5bGNuWUtyZ2RDKzRLN0pscDNoSGR6cGJmZWZ1TWJFbmZYYmxMTkZDNVhXM0h3dlE0blVGK2pCQStRaVUKcHc2aTlOZ21WRTIzb0dMT3R3VGVNREtDNm1OVWVRcFpkTXgvZldyaU1QNDRGT1p3Z1V4dFliLzQyZTBNa0E0cgo2V2lpcFVvaU9iSjNvVWk4WEVPVUUybytlSHBESm9UZmlRcDB5eTVzaFJsTGJSMFkxTXlVMWhsTEFKdWZBU0pmCnpQME5qbGpaUzdSQ1dkWWJLaU5xRFN5K1kxMWQ4VmdxeUdNVS9XU0FaN2s0UzJiZjI4WlZyRk80TzlabllULzcKK24zZ3p6bnhtYzBhaGhObnhoTXpwenh0MWZ2ZFFQNzkrZUpjT3lVeTUzeS9TdjlFUnE1SUFuVTRFK2hMQWdNQgpBQUdqUWpCQU1BNEdBMVVkRHdFQi93UUVBd0lCcGpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXCkJCU05ESlhoZGhERzh0QkZCcUxpWTMvYmlBTmFQVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBWUVBNGtLTzRPTTUKMmFIVmZhanJ3c0s2ZWJ1QktzQ1dQY0xWcTU4WENPa0N5WUoxNXBvU1pOdGRMZitXbHZ0cTNMM1lnbUFaRk9ObwpBQ1ZhaFZCak1pRzY0UHNTOWd2bUY4ZEYzbFg5TzZVOVdxOVZkSFVwMXJTaytPZWxTN3M2VU1LT3VPeGJhNjV1ClVaZnBvMTJVZ1I3Z2FudG5kWjJpVDVXQnIxSDhsMmpVVEw0eXYyY2pUWU1EVVJXVE1nN0RuYmZ0RXc1OGFFV1kKNmJDZ0R4QmNwZ1FKanVHSG5GN1hpL2dHeEJjZW1UVFlsclUzOW5mQlpFZmlnM00zNnFXd3IvTVA0L2lNT0ZPTwpyeFBiazFWdHJZYkZDUEZWTlVIUENBVy9ZaFdyQWc5OGJuNTVlcGpWOE4yTmF4Rmt6R3UxMjBNSkdwVUJHckZiCjZNNkhYZnVidHRGRzdoNWlkYlhDRkx4aFlISUpFNHhJWGFHVW9ROS95MW1aeHJLUU1KQ05rb3czNS9OK00wNEcKenJqSVg5Q2ZaWG96SzZDbHpzNkgvUXZycHRCZ0V4NE5LejhlWkM0eXE1TGlIcDNnUnM0Um5sZ3FvWExuWjhIUgpiMVRkU3piVFlXN0lyY0ZxeXQ3TjhQeW5WdlR4NDgxMjd4U2tzSzdjRzU5SVkwWjdzVUVwaWgzZgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==","server":"https://api.c-784ea40.kyma.ondemand.com"},"name":"garden-kyma--c-784ea40-external"}],"contexts":[{"context":{"cluster":"garden-kyma--c-784ea40-external","user":"garden-kyma--c-784ea40-external"},"name":"garden-kyma--c-784ea40-external"}],"current-context":"garden-kyma--c-784ea40-external","kind":"Config","users":[{"name":"garden-kyma--c-784ea40-external","user":{"exec":{"apiVersion":"client.authentication.k8s.io/v1","args":["-c","set -e -o pipefail\nOIDC_URL_WITH_AUDIENCE=\"$ACTIONS_ID_TOKEN_REQUEST_URL\u0026audience=${{ secrets.xp264_000_quovadis_66eb9785 }}\"\nIDTOKEN=$(curl -sS \\\n  -H \"Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN\" \\\n  -H \"Accept: application/json; api-version=2.0\" \\\n  \"$OIDC_URL_WITH_AUDIENCE\" | jq -r .value)\n# Print decoded token information for debugging purposes\necho ::debug:: JWT content: \"$(echo \"$IDTOKEN\" | jq -c -R 'split(\".\") | .[1] | @base64d | fromjson')\" \u003e\u00262\nEXP_TS=$(echo $IDTOKEN | jq -R 'split(\".\") | .[1] | @base64d | fromjson | .exp')\nEXP_DATE=$(date -d @$EXP_TS --iso-8601=seconds)\n# return token back to the credential plugin\ncat \u003c\u003c EOF\n{\n  \"apiVersion\": \"client.authentication.k8s.io/v1\",\n  \"kind\": \"ExecCredential\",\n  \"status\": {\n    \"token\": \"$IDTOKEN\",\n    \"expirationTimestamp\": \"$EXP_DATE\"\n  }\n}\nEOF\n"],"command":"bash","interactiveMode":"Never"}}}]}
+        "method": "kubeconfig"
+    - "name": "check permissions"
+      "run": |
+        kubectl auth can-i --list --namespace quovadis-btp
+        kubectl get nodes
+        kubectl get pod -A
+        kubectl get -n kyma-system kymas default -o json | jq '.spec.modules[] '
+        kubectl get cm/shoot-info -n kube-system -o json | jq .data
+        kubectl get openidconnect
+"name": "XP264-000-52782faf-c7b3-4aa0-8991-1f9af788c4b0"
+"on":
+  "workflow_dispatch": null
+"permissions":
+  "id-token": "write"
