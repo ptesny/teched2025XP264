@@ -18,7 +18,7 @@
         kubectl get cm/shoot-info -n kube-system -o json | jq .data
         kubectl get openidconnect
         kubectl get cm/kyma-provisioning-info -n kyma-system -ojsonpath='{.data.details}'
-   - "name": "kyma cli 3.1.0"
+    - "name": "kyma cli 3.1.0"
       "run": |
         echo "Installing kyma cli..."
         curl -sSL "https://github.com/kyma-project/cli/releases/download/3.1.0/kyma_Linux_x86_64.tar.gz" |  tar -xzv kyma
@@ -34,41 +34,41 @@
 
         kubectl delete all -l app.kubernetes.io/name=httpbin-app
         ./kyma app push --name httpbin-app --image kennethreitz/httpbin --istio-inject true --expose --container-port 80
-   - "name": "kyma nodejs functions"
-     "run": |
+    - "name": "kyma nodejs functions"
+      "run": |
         echo "discover kyma serverless functions on-the-go..."
         ./kyma function init nodejs test-function
         ls -la
         ./kyma function create nodejs test-fn -v 20 --source ./handler.js --dependencies ./package.json
         kubectl get functions
 
-   - "name": "kyma python functions"
-     "run": |
+    - "name": "kyma python functions"
+      "run": |
         echo "discover kyma serverless functions on-the-go..."
         ./kyma function create python test-py-fn
         kubectl get functions
 
-   - "name": "Community Modules Support"
-     "run": |
+    - "name": "Community Modules Support"
+      "run": |
         echo "discover/add available community-driven modules..."
 
         ./kyma module catalog
-   - "name": "kyma-oidc-0 (https://dashboard.kyma.cloud.sap/cluster)"
-     "run": |
+    - "name": "kyma-oidc-0 (https://dashboard.kyma.cloud.sap/cluster)"
+      "run": |
         echo "generate kubeconfig files..."
 
         ./kyma alpha kubeconfig generate --oidc-name kyma-oidc-0 --output=./kymacanary-oidc.yaml
 
         cat ./kymacanary-oidc.yaml
-   - "name": "kymacanary-oidc (https://dashboard.kyma.cloud.sap/cluster)"
-     "run": |
+    - "name": "kymacanary-oidc (https://dashboard.kyma.cloud.sap/cluster)"
+      "run": |
         echo "generate kubeconfig files..."
 
         ./kyma alpha kubeconfig generate --oidc-name kymacanary-oidc --output=./kymacanary-oidc.yaml
 
         cat ./kymacanary-oidc.yaml
-   - "name": "kymaprod-oidc (https://dashboard.kyma.cloud.sap/cluster)"
-     "run": |
+    - "name": "kymaprod-oidc (https://dashboard.kyma.cloud.sap/cluster)"
+      "run": |
         echo "generate kubeconfig files..."
 
         ./kyma alpha kubeconfig generate --oidc-name kymaprod-oidc --output=./kymaprod-oidc.yaml
