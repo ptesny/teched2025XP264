@@ -1,0 +1,1 @@
+# Exercise 3: Exploring Kyma Telemetry with SAP Cloud Logging
