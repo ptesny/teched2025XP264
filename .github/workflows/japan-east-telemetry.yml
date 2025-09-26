@@ -12,6 +12,7 @@
     - "name": "Simulate load on httpbin app"
       "run": |
         echo "Get the HTTPBIN APP Hostname"
+        # TODO: use dynamic namespace from previous exercises
         export HTTPBIN_HOST=$(kubectl get virtualservices.networking.istio.io -l apirule.gateway.kyma-project.io/v1beta1=httpbin-app.default -ojsonpath='{.items[0].spec.hosts[0]}')
         echo "Simulate some traffic to the HTTPBIN APP deployed on Kyma runtime under hostname ${HTTPBIN_HOST}"
         for f in {1..10}; do curl https://${HTTPBIN_HOST}/headers; done
