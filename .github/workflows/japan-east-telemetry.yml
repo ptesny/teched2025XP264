@@ -1,5 +1,5 @@
 "jobs":
-  "apply-manifest":
+  "simulate-load-on-httpbin-app":
     "runs-on":
     - "ubuntu-latest"
     "steps":
