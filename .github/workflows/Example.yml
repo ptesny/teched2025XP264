@@ -1,9 +1,7 @@
 name: Example workflow
 
 on:
-  pull_request:
-  push:
-  workflow_dispatch:
+  workflow_dispatch: null
 
 jobs:
   k8s-test:
