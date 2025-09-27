@@ -30,7 +30,7 @@
       uses: jupyterhub/action-k8s-namespace-report@v1
       if: always()
       with:
-       namespace: xp-264-002
+       namespace: xp264-002
       #   pod-selector: app.kubernetes.io/component notin (secret-server,boring-server)
       #   important-workloads: deploy/my-deployment sts/my-statefulset
 
