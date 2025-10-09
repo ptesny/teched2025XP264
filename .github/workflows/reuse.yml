@@ -1,5 +1,5 @@
 "env":
-  "NAMESPACE": "${{ github.event.inputs.NAMESPACE }}"
+  "NAMESPACE": "${{ inputs.NAMESPACE }}"
 "jobs":
   "apply-manifest":
     "runs-on":
