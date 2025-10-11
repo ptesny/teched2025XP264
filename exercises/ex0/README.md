@@ -91,9 +91,13 @@ Each student's runtime context has a preconfigured SAP Cloud Connector attached,
 <div>
 <h1><a href=""><img class="aligncenter" src="https://github.com/user-attachments/assets/5e92690b-41ad-4cf4-993a-f8486d0bb32d" alt="" /></a></h1>
 </div>
+<td style="width: 71.6%; height: 193px;">
+
 <div>
 <h1><a href="https://btp-provider-quovadis-d2ec7477.launchpad.cfapps.eu20.hana.ondemand.com/site?siteId=c86df614-dacd-4a2f-9b39-5b09f46e7370#Shell-home"><img class="aligncenter" src="../ex0/images/site_navigations.png" alt="" /></a></h1>
 </div>
+</td>
+
 </td>
 </tr>
 </tbody>
