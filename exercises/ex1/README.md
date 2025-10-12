@@ -1,4 +1,4 @@
-# Exercise 1 - Kyma CLI
+# Exercise 1 - Get your hands dirty with kyma CLI
 
 Quoting after [Kyma CLI | SAP Help](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-cli):  
 
