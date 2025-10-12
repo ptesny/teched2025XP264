@@ -112,6 +112,11 @@ Easy navigation with the session landscape site:
 </table>   
 
 
+<p float="left">
+  <img src="../ex0/images/site_navigation.png" width="400" />
+  <img src="./ex0/images/functional_architecture.png" width="400" /> 
+</p>
+
 Functional architecture
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
