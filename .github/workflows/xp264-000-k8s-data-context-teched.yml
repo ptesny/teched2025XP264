@@ -106,8 +106,8 @@ env:
 
         export CONFIG_DIRECTORY=${{ env.CONFIG_DIRECTORY }}
         export BTP_USERNAME=${{ vars.BTP_USERNAME }}
-        #export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
-        export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
+        export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
+        #export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
 
         echo ${{ secrets.CICD_TOKEN_FOR_TF_MODULES }} | base64
 
@@ -138,8 +138,8 @@ env:
         export GITHUB_TOKEN=${{ secrets.PAT_GITHUB_TOOLS_SAP }}
 
         export BTP_USERNAME=${{ vars.BTP_USERNAME }}
-        #export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
-        export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
+        export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
+        #export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
 
         export RUNTIME_INDEX=${{ env.RUNTIME_INDEX }}
         export TF_VAR_runtime_context_workspace=${{ env.RUNTIME_CONTEXT_WORKSPACE }}
