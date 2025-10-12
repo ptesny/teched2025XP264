@@ -151,6 +151,7 @@ Now that you have everything you need to successfully go through this TechEd ses
 
 - A GitHub account.
 - Your own fork of the session's GitHub repository.
-- A BTP global account with prepared subaccounts.
+- Access to the SAP BTP managed kubernetes landscape with the easy navigation site
+- An idea of the functional architecture behind the solution brief
 
 Continue to [BTP Kyma easy with kyma CLI](../ex1/README.md)
