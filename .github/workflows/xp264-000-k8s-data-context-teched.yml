@@ -133,8 +133,8 @@ env:
         export KUBECONFIG=$TOTO
         echo $KUBECONFIG
 
-        cp all-in-one-kubeconfig.yaml $KUBECONFIG
-        echo $KUBECONFIG
+        cp ./all-in-one-kubeconfig.yaml $KUBECONFIG
+        cat $KUBECONFIG
 
         # https://able8.medium.com/how-to-merge-multiple-kubeconfig-files-into-one-36fc987c2e2f
         kubectl config get-clusters --kubeconfig all-in-one-kubeconfig.yaml
