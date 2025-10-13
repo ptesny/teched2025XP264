@@ -35,8 +35,6 @@ provider "qrcode" {
 provider "btp" {
   globalaccount  = var.BTP_GLOBAL_ACCOUNT
   cli_server_url = var.BTP_BACKEND_URL
-//  username       = var.BTP_BOT_USER
-//  password       = var.BTP_BOT_PASSWORD
   idp            = var.BTP_CUSTOM_IDP
 }
 
