@@ -36,12 +36,12 @@ env:
   CONFIG_DIRECTORY: "./exercises/ex1/k8s-data/"
   PATH_TO_TFSCRIPT: "./exercises/ex1/k8s-data/"  
 
-  CLUSTER_CONFIG: |
-      "${{ inputs.subaccount_name == 'uk-xp264' && '0'
-      || inputs.subaccount_name == 'uk-south' && '1' 
-      || inputs.subaccount_name == 'xp264-000' && '2'
-      || inputs.subaccount_name == 'japanese-east' && '3'
-      || inputs.subaccount_name == 'us-east' && '4'
+  CLUSTER_CONTEXT: |
+      "${{ inputs.subaccount_name == 'uk-xp264' && 'garden-kyma--b84edf3-external'
+      || inputs.subaccount_name == 'uk-south' && 'garden-kyma--a896778-external' 
+      || inputs.subaccount_name == 'xp264-000' && 'garden-kyma--c-4d2de7e-external'
+      || inputs.subaccount_name == 'japanese-east' && 'garden-kyma--c-99567a9-external'
+      || inputs.subaccount_name == 'us-east' && 'garden-kyma--ca15e0c-external'
       }}"
 
   ## Additional env variables
@@ -153,7 +153,7 @@ env:
         kubectl config get-clusters
         kubectl config get-contexts
 
-        kubectl config use-context garden-kyma--c-4d2de7e-external
+        kubectl config use-context ${{ env.CLUSTER_CONTEXT }}
         kubectl config current-context
 
     - "name": "install kyma cli"
