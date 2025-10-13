@@ -122,6 +122,7 @@ env:
          kyma -h
          kyma alpha -h
     - "name": "Diagnose cluster health and configuration."
+      id: cluster_info
       "run": |
         echo "Diagnose cluster health and configuration...."
 
@@ -140,7 +141,9 @@ env:
 
         GLOBALACCOUNT=$(kyma alpha diagnose -f json | jq -r '.metadata.globalAccountID ' ) 
         echo $GLOBALACCOUNT
-        export BTP_GLOBAL_ACCOUNT=$GLOBALACCOUNT
+
+        echo "GLOBALACCOUNT=$GLOBALACCOUNT" >> $GITHUB_OUTPUT
+        
       
     - name: Setup Terraform
       id : setup_terraform
@@ -188,12 +191,13 @@ env:
         export TF_REGISTRY_CLIENT_TIMEOUT=30s
 
         export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
+        export BTP_GLOBAL_ACCOUNT=${{steps.cluster_info.outputs.GLOBALACCOUNT}}
 
         export TF_VAR_runtime_context_workspace=${{ env.RUNTIME_CONTEXT_WORKSPACE }}
         ##-var BTP_GLOBAL_ACCOUNT=${{ github.event.inputs.GLOBALACCOUNT }} \
   
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} ${{ env.RUNTIME_ACTION }} \
-        -var BTP_GLOBAL_ACCOUNT=${{ env.BTP_GLOBAL_ACCOUNT }} \
+        -var BTP_GLOBAL_ACCOUNT=${{steps.cluster_info.outputs.GLOBALACCOUNT}} \
         -var BTP_CUSTOM_IDP=${{ github.event.inputs.IDP }} \
         -var BTP_SUBACCOUNT=${{ github.event.inputs.subaccount_name }} \
         -var POSTGRES_ALLOW_ACCESS=${{ vars.POSTGRES_ALLOW_ACCESS }} \
