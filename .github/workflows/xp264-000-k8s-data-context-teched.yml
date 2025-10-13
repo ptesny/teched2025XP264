@@ -82,6 +82,11 @@ env:
     "runs-on":
     - "ubuntu-latest"
     "steps":
+    - "name": "install kyma cli"
+      uses: kyma-project/setup-kyma-cli@v1
+      with:
+        version: latest
+
     - "name": "Check out Git repository"
       "uses": "actions/checkout@v4"
 
