@@ -29,12 +29,6 @@ on:
           - "us-east"
           - "uk-xp264"
 
-#      runtime_context_index:
-#        description: "runtime_context_index"
-#        required: true
-#        default: "xp264-000"   
-
-
 ## Add shared Environment Variables across jobs here ##
 env:
   RUNTIME_ACTION: ${{ inputs.ACTION == 'deploy' && 'apply' || inputs.ACTION }}
@@ -49,7 +43,6 @@ env:
       || inputs.subaccount_name == 'japanese-east' && '3'
       || inputs.subaccount_name == 'us-east' && '4'
       }}"
-
 
   ## Additional env variables
   ## https://developer.hashicorp.com/terraform/cli/config/environment-variables
