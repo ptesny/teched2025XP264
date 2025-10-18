@@ -3,8 +3,7 @@
 module "k8s_context" {
   source    = "github.com/quovadis-btp/btp-automation/btp-context/runtime-context/modules/kyma-runtime/gha"
 
-  BTP_SUBACCOUNT     = var.BTP_SUBACCOUNT
-  subaccount_id      = var.subaccount_id
+  BTP_SUBACCOUNT        = var.BTP_SUBACCOUNT
   POSTGRES_ALLOW_ACCESS = var.POSTGRES_ALLOW_ACCESS
   
   runtime_context_workspace = var.runtime_context_workspace

@@ -14,19 +14,12 @@ variable "BTP_BACKEND_URL" {
 
 variable "BTP_SUBACCOUNT" {
   type        = string
-  description = "Subaccount name"
-}
-
-variable "subaccount_id" {
-  type        = string
-  description = "The subaccount ID."
-  default     = ""  // create a new subaccount
+  description = "Subaccount 's runtime context prefix"
 }
 
 variable "BTP_CUSTOM_IDP" {
   type        = string
-  description = "Custom IAS tenant fully qualified host name"
-  default     = ""
+  description = "Platform Custom IAS tenant fully qualified host name"
 }
 
 variable "POSTGRES_ALLOW_ACCESS" {
@@ -34,7 +27,6 @@ variable "POSTGRES_ALLOW_ACCESS" {
   description = "allow_access IPs and/ir CI/DRs + cluster egress ips"
   default     = "" // defaults to no allow access
 }
-
 
 variable  "runtime_context_workspace" {
   // export TF_VAR_runtime_context_workspace=${{ env.RUNTIME_CONTEXT_WORKSPACE }}
