@@ -1,4 +1,5 @@
 output "sapbtp" {
+ sensitive = true
  value = module.mt_context.sapbtp
 }
 
