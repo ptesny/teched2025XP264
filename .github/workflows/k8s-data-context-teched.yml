@@ -337,23 +337,23 @@ env:
         RUNTIME_WORKSPACE: "k8s-context-${{ inputs.subaccount_name }}-${{steps.cluster_info.outputs.GLOBALACCOUNT}}"
         PROVIDER_WORKSPACE: "provider-context-${{steps.cluster_info.outputs.GLOBALACCOUNT}}" 
 
+    - name: Convert JSON to HTML Table
+      uses: Teebra/JSON-to-HTML-table@v2.0.0
+      with:
+        json-file: ./tf_output.json  # Specify the path to your JSON file
+
+    - name: Upload HTML Table to Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: output_html 
+        path: output.html # The created file's name is output.html. Name cannot be changed
+
+
 #    - name: json2html
 #      id: json2html
 #      uses: Enovade/json2html@v0.2.3
 #      with:
 #        json: ${{ steps.terraform_output.outputs.kyma_parameters }}
-
-#    - name: Convert JSON to HTML Table
-#      uses: Teebra/JSON-to-HTML-table@v2.0.0
-#      with:
-#        json-file: ./tf_output.json  # Specify the path to your JSON file
-
-#    - name: Upload HTML Table to Artifacts
-#      uses: actions/upload-artifact@v4
-#      with:
-#        name: output_html 
-#        path: output.html # The created file's name is output.html. Name cannot be changed
-
 
 #    - name: Terraform Results
 #      id: terraform_results
