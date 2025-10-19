@@ -236,6 +236,7 @@ env:
         export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} state list
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output
+        terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output faas-app-xp264-049-saas
 
       env:
         RUNTIME_WORKSPACE: "mt-context-${{ inputs.subaccount_name }}-${{env.GLOBALACCOUNT}}"
