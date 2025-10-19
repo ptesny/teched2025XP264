@@ -6,8 +6,7 @@ data "btp_subaccounts" "all" {}
 # look up all available subaccounts of a global acount that have a specific label attached
 #
 locals {
-  label_value_string = "${var.BTP_SUBACCOUNT}-context"
-  labels_filter      = "${var.BTP_SUBACCOUNT}-context=${local.label_value_string}"
+  labels_filter = "${var.BTP_SUBACCOUNT}-trust=${var.BTP_CUSTOM_IDP}"
 
 }
 data "btp_subaccounts" "filtered" {
@@ -19,7 +18,6 @@ output "btp_subaccounts_filtered" {
 }
 
 data "btp_subaccount" "context" {
-
   id = data.btp_subaccounts.filtered.values[0].id
 }
 
