@@ -103,7 +103,7 @@ resource "btp_subaccount_role_collection_assignment" "subaccount_platform_idp_gr
   subaccount_id        = data.btp_subaccount.context.id
   role_collection_name = "Subaccount Administrator"
   group_name           = each.value
-  origin               = local.platform_trust_origin[0]
+  origin               = length(local.platform_trust_origin) != 0 ? local.platform_trust_origin[0] : "anuk8cmfw-platform"
 }
 
 
