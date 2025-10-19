@@ -18,7 +18,7 @@ on:
           - "anuk8cmfw.accounts.ondemand.com"
 
       subaccount_name:
-        description: "k8s region (subaccount) name prefix"
+        description: "k8s region prefix"
         required: true
         default: "xp264-000"
         type: "choice"
@@ -53,10 +53,6 @@ env:
 
 "jobs":
   "apply-manifest":
-#    strategy:
-#      matrix:
-#        cluster_config: >
-
     "runs-on":
     - "ubuntu-latest"
     "steps":
@@ -269,9 +265,6 @@ env:
         export TF_WORKSPACE=${{ env.RUNTIME_WORKSPACE }}
 
       env:
-        CICD_TOKEN_FOR_TF_MODULES: ${{ secrets.CICD_TOKEN_FOR_TF_MODULES }}
-        CICD_REPO_USERNAME_FOR_TF_MODULES: ${{ vars.CICD_REPO_USERNAME_FOR_TF_MODULES }}
-
         RUNTIME_CONTEXT_WORKSPACE: "runtime-context-${{ inputs.subaccount_name }}-${{steps.cluster_info.outputs.GLOBALACCOUNT}}"
         RUNTIME_WORKSPACE: "k8s-context-${{ inputs.subaccount_name }}-${{steps.cluster_info.outputs.GLOBALACCOUNT}}"
         PROVIDER_WORKSPACE: "provider-context-${{steps.cluster_info.outputs.GLOBALACCOUNT}}" 
