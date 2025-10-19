@@ -191,20 +191,16 @@ resource "btp_subaccount_subscription" "faas_xp264_mt" {
   }  
 }
 
-/*
 data "btp_subaccount_subscription" "faas_xp264_mt" {
-  count         = var.subaccount_id == "" ? 1 : 0
-
-  depends_on    = [btp_subaccount_subscription.faas_xp264_mt]
+  count         = var.subaccount_id == "" ? 0 : 1
 
   subaccount_id = data.btp_subaccount.context.id
-  app_name      = one(time_sleep.subscription_propagation[*].triggers["app_name"]) 
-  plan_name     = "" //one(time_sleep.subscription_propagation[*].triggers["plan_name"]) 
+  app_name      = local.faas-app-xp264-049-saas[0]["app_name"]
+  plan_name     = local.faas-app-xp264-049-saas[0]["plan_name"]) 
 }
-*/
 
 output "faas_xp264_mt_subscription_url" {
-  value = one(btp_subaccount_subscription.faas_xp264_mt[*].subscription_url)
+  value = var.subaccount_id == "" ? one(btp_subaccount_subscription.faas_xp264_mt[*].subscription_url) : one(data.btp_subaccount_subscription.faas_xp264_mt[*].subscription_url)
 }
 
 locals {
