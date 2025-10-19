@@ -99,7 +99,7 @@ resource "btp_subaccount_role_collection_assignment" "subaccount_platform_idp_gr
   depends_on           = [btp_subaccount_trust_configuration.custom_idp]
 
 //  for_each             = length(local.platform_trust_origin) != 0 ? toset( "${var.admin_groups}" ) : toset([])
-  for_each             = toset( "${var.admin_groups}" ) : toset([])
+  for_each             = toset( "${var.admin_groups}" )
   subaccount_id        = data.btp_subaccount.context.id
   role_collection_name = "Subaccount Administrator"
   group_name           = each.value
