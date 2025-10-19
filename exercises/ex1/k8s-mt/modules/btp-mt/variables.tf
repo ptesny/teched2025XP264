@@ -1,0 +1,15 @@
+variable "BTP_SUBACCOUNT" {
+  type        = string
+  description = "consumer tenant (subaccount) name prefix"
+}
+
+variable "BTP_SA_REGION" {
+  type        = string
+  description = "consumer tenant (subaccount) region. Must the same as the provider's region"
+}
+
+
+variable "admin_groups" {
+  type        = list(string)
+  description = "Defines the platform IDP groups to be added to each subaccount as administrators."
+}
