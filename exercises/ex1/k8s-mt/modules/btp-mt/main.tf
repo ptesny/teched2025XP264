@@ -182,7 +182,7 @@ resource "btp_subaccount_subscription" "faas-xp264-mt" {
   depends_on    = [btp_subaccount_trust_configuration.custom_idp]
 
   subaccount_id = data.btp_subaccount.context.id
-  app_name      = time_sleep.subscription_propagation.triggers["subscription"] // "faas-app-xp264-049-saas"
+  app_name      = one(time_sleep.subscription_propagation[*].triggers["subscription"]) // "faas-app-xp264-049-saas"
   plan_name     = "default"
   //parameters    = jsonencode({})
   timeouts = {
