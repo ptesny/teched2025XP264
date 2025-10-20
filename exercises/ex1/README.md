@@ -108,7 +108,7 @@ response->set_text( |Hello World! | ).
 
 
 
-## Exercise 1.2 - Getting acquainted with your kyma cluster
+## Exercise 1.2 - Getting to know your kyma cluster
 
 Let's leverage the kyma cli to get simple metadata
 
@@ -215,6 +215,9 @@ spec:
 
 
 ```
+
+## Exercise 1.5 - BTP multitenancy with kyma
+
 
 2.	Click here.
 <br>![](/exercises/ex1/images/01_02_0010.png)

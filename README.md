@@ -53,6 +53,8 @@ The requirements to follow the exercises in this repository are...
 
   * [Exercise 1.0 - Get your hands dirty with kyma CLI](exercises/ex1#exercise-10---get-your-hands-dirty-with-kyma-cli)
   * [Exercise 1.1 - Firefighter access to your kyma cluster](exercises/ex1#exercise-11---fire-fighter-access-to-your-kyma-cluster)
+  * [Exercise 1.2 - Getting to know your kyma cluster](exercises/ex1#exercise-12---getting-to-know-your-kyma-cluster)
+  * [Exercise 1.5 - Multitenancy playground](exercises/ex1#exercise-15---btp-multitenancy-with-kyma)
 
 
 Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
