@@ -13,7 +13,7 @@ This session introduces attendees to **Day-2** operation with SAP BTP, Kyma runt
 
 **Kyma** as of such, part of [Kyma project](https://github.com/kyma-project), is an opinionated set of Kubernetes-based modular building blocks (modules) that provide all the necessary capabilities to develop and run enterprise-grade cloud-native applications.  
 
-### During the session you will learn:
+### During the session you will learn
 
   * how to run applications on the Kyma runtime for SAP BTP and discover the power of smooth integration with cloud applications and on-premise systems using the advanced connectivity features.  
   * to explore operational best practices from mastering troubleshooting techniques and intelligent root-cause analysis to event-driven autoscaling that adapts to your business needs in real time.
@@ -31,9 +31,9 @@ The requirements to follow the exercises in this repository are...
   installing the oidc-login plugin | |
   install view-serviceaccount-kubeconfig plugin | |
 
-  * Github actions (GHA). You may run the GHA-based exercises direclty from a browser from your forked repository. Alternatively, you may use VSCode termainal and other plugins you may be familiar with.
+  * Github actions (GHA). You may run the GHA-based exercises direclty from a browser on the laptop from your forked repository. Alternatively, you may use VSCode terminal and other plugins you may be familiar with.
 
-  * As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components like SAP Cloud Logging, SAP HANA Cloud.  
+  * As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components like SAP Cloud Logging, SAP HANA Cloud and others.  
   All the SAP Kyma environments have been configured to the same template.  
   Each SAP Kyma kubernetes ckuster offers the same setup with very minor differences...
 
