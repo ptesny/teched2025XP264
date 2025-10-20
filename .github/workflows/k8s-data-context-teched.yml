@@ -216,9 +216,6 @@ env:
         DEEPLINK=$(kyma alpha diagnose -f json | jq -r '.metadata | { deeplink: ("https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/" + .globalAccountID + "/subaccount/" + .subaccountID) } | .deeplink' )
         echo $DEEPLINK
 
-        DEEPLINK2=$(kyma alpha diagnose -f json | jq -r '.metadata | { deeplink: ("https://emea.cockpit.btp.cloud.sap/cockpit/#/globalaccount/" + .globalAccountID + "/subaccount/" + .subaccountID) } | .deeplink' )
-        echo $DEEPLINK2
-
         GLOBALACCOUNT=$(kyma alpha diagnose -f json | jq -r '.metadata.globalAccountID ' ) 
         echo $GLOBALACCOUNT
 

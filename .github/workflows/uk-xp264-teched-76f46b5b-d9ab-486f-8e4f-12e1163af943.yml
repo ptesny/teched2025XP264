@@ -62,7 +62,7 @@
         helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
         helm repo update
         helm show values jupyterhub/jupyterhub > values.yaml
-        cat ./values.yaml
+        #cat ./values.yaml
         helm uninstall -n jupyter quovadis-jupyter --ignore-not-found
         helm upgrade --cleanup-on-fail --install quovadis-jupyter jupyterhub/jupyterhub --namespace jupyter --create-namespace --values values.yaml
     - "name": "check permissions"
@@ -89,12 +89,17 @@
         echo "deploy a docker image and expose it via an API Rule v2"
 
         kubectl delete all -l app.kubernetes.io/name=httpbin-app
-        ./kyma app push --name httpbin-app --image kennethreitz/httpbin --istio-inject true --expose --container-port 80
+        HOSTNAME=$(./kyma app push --name httpbin-app --image kennethreitz/httpbin --istio-inject true --quiet --expose --container-port 80 )
+        HTTPBIN_URL=https://$HOSTNAME
+        echo -e "$HTTPBIN_URL\n"
     - "name": "Diagnose cluster health and configuration"
       "run": |
         echo "Get cluster metadata..."
 
         ./kyma alpha diagnose -f json | jq -r '.metadata'
+        DEEPLINK=$(kyma alpha diagnose -f json | jq -r '.metadata | { deeplink: ("https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/" + .globalAccountID + "/subaccount/" + .subaccountID) } | .deeplink' )
+        echo $DEEPLINK
+        
     - "name": "Community Modules Support"
       "run": |
         echo "discover/add available community-driven modules..."
