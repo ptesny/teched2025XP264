@@ -49,8 +49,7 @@ This step is optional and you can be use instead any existing personal GitHub ac
 
 ## Exercise 0.2 - Discover SAP-TechEd25-XP264 Business Technology Platform landscape
 
-- SSO to the [SAP-TechEd25-XP264 Business Technology Platform - Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/c1f19148-71f7-4883-9f86-8d5ee7634dec)
-- Use you student's credentials to login
+- Login to [SAP-TechEd25-XP264 Business Technology Platform - Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/c1f19148-71f7-4883-9f86-8d5ee7634dec) with your allocated student's credentials (SSO)
 
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
@@ -65,6 +64,13 @@ This step is optional and you can be use instead any existing personal GitHub ac
 </tbody>
 </table>   
 
+- The BTP landscape has a number of subaccounts or runtime contexts.  
+- Most of the untime contexts are hosted in the same region - in the EU20 data center (Azure/Netherlands)
+- Still, there a few with in the EU10 data center (AWS/Francfort)
+- Each subaccount can host a single kyma runtime environment.
+- Each kyma environment is a kyma kuberneters cluster in the Azure or AWS region of your choice...which may be different from the BTP subaccount region
+
+
 | Account Name              | Type        |                                                                                                                                Description |
 | :------------------------ | :---------: | :------------------------------------------------------------------------------------------------------------------------ |
 | btp-argocd                |  Session Master  | with a shared ArgoCD instance (with SSO for all participants)             |
@@ -74,20 +80,7 @@ This step is optional and you can be use instead any existing personal GitHub ac
 | uk-south                  |  UK SOUTH region | Students runtime contexts with kyma environment in the uk south region         |
 | japan-east                |  JAPAN EAST region | Students runtime contexts with kyma environment in the japan east region         |
 
-Each student's runtime context has a preconfigured SAP Cloud Connector attached, for instance:
-
-
-<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
-<tbody>
-<tr style="height: 193px;">
-<td style="width: 71.6%; height: 193px;">
-<div>
-<h1><a href=""><img class="aligncenter" src="https://github.com/user-attachments/assets/5e92690b-41ad-4cf4-993a-f8486d0bb32d" alt="" /></a></h1>
-</div>
-</td>
-</tr>
-</tbody>
-</table>   
+ 
  
 
 Easy navigation with the session landscape site with your allocated student's user name:  
@@ -120,6 +113,22 @@ Here goes a diagram of the functional architecture of the solution
 </tr>
 </tbody>
 </table>   
+
+
+Each student's runtime context has a preconfigured SAP Cloud Connector attached, for instance:
+
+
+<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<tbody>
+<tr style="height: 193px;">
+<td style="width: 71.6%; height: 193px;">
+<div>
+<h1><a href=""><img class="aligncenter" src="https://github.com/user-attachments/assets/5e92690b-41ad-4cf4-993a-f8486d0bb32d" alt="" /></a></h1>
+</div>
+</td>
+</tr>
+</tbody>
+</table>  
 
 ## Summary
 
