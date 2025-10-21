@@ -99,9 +99,11 @@ The requirements to follow the exercises in this repository are...
   * [Exercise T2.3 - Create a static Destination Custom Resource](exercises/exT2#exercise-t23-create-a-static-destination-custom-resource)
   * [Exercise T2.4 - Explore the results of the creation of the Destination CRs via Kubectl](exercises/exT2#exercise-t24-explore-the-results-of-the-creation-of-the-destination-crs-via-kubectl)
 
-* #### [Exercise T3 - Use Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
+* #### [Exercise T3 - Use Transparent Proxy Kyma Module](exercises/exT3#exercise-t3---use-transparent-proxy-kyma-module)
 
-  * [Exercise T2.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+  * [Exercise T3.1 - Run a cURL Pod Included in the Istio Service Mesh](exercises/exT3#exercise-t31-run-a-curl-pod-included-in-the-istio-service-mesh)
+  * [Exercise T3.1 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+  * [Exercise T3.1 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
 
 
 ----------------------------  
