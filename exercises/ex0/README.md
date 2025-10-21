@@ -73,7 +73,6 @@ This step is optional and you can be use instead any existing personal GitHub ac
 
 
 
-
 ### The rules of the game
 
 - The students can pick and choose any available kyma cluster region from the following list:
@@ -86,8 +85,7 @@ This step is optional and you can be use instead any existing personal GitHub ac
  
 - Each cluster has been configured to the same template with dedicated namespaces for each student.
 - As this is an academic exercise, the complete user/namespace isolation has not been enforced.
-
-- Last but not least, all students have accees to the Easy Navigation dashboard, namely
+- Last but not least, all students have accees to the Easy Navigation dashboard, namely:  
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
@@ -102,8 +100,8 @@ This step is optional and you can be use instead any existing personal GitHub ac
 </table>   
 
 
-- The students do not have access to the shared components of the landscape. 
-- Any shared infrascture access is granted from the Easy Navigation dashboard via SSO.
+- The students do not have access to the master components of the landscape. 
+- Any shared infrascture access required for the session is granted via SSO with the links available from the Easy Navigation site.
 
 | Account Name              | Type        |                                                                                                                                Description |
 | :------------------------ | :---------: | :------------------------------------------------------------------------------------------------------------------------ |
