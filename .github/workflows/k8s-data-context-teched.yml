@@ -1,6 +1,6 @@
 on:
   workflow_dispatch:
-
+    inputs:
       subaccount_name:
         description: "k8s region prefix"
         required: true
