@@ -53,7 +53,7 @@ The requirements to follow the exercises in this repository are...
 
   * Last but not least, you will be able to *play* with a pre-deployed SAP Build multitenant application which follows BTP multitenancy paradigm.  
 
-## Exercises
+## - [Getting Started](exercises/ex0/)
 
 * #### [Exercise 0 - Preparation Steps](exercises/ex0#exercise-0---preparation-steps)
 
@@ -85,20 +85,22 @@ The requirements to follow the exercises in this repository are...
   * [Exercise 3.4 - Explore Traces](exercises/ex3#exercise-34---explore-traces)
 
 
-Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
+* #### [Exercise T1 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
 
-- [Getting Started](exercises/ex0/)
-- [Exercise 1 - First Exercise Description](exercises/ex1/)
-    - [Exercise 1.1 - Exercise 1 Sub Exercise 1 Description](exercises/ex1#exercise-11-sub-exercise-1-description)
-    - [Exercise 1.2 - Exercise 1 Sub Exercise 2 Description](exercises/ex1#exercise-12-sub-exercise-2-description)
-- [Exercise 2 - Second Exercise Description](exercises/ex2/)
-    - [Exercise 2.1 - Exercise 2 Sub Exercise 1 Description](exercises/ex2#exercise-21-sub-exercise-1-description)
-    - [Exercise 2.2 - Exercise 2 Sub Exercise 2 Description](exercises/ex2#exercise-22-sub-exercise-2-description)
+  * [Exercise T1.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
 
-  
-**OR** Link to the Tutorial Navigator for example...
 
-Start the exercises [here](https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html).
+* #### [Exercise T2 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
+
+  * [Exercise T2.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+
+* #### [Exercise T3 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
+
+  * [Exercise T2.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+
+
+----------------------------  
+SAP Kyma in Developers Tutorial Navigator: [here](https://developers.sap.com/tutorial-navigator.html?search=kyma).
 
 **IMPORTANT**
 
