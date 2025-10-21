@@ -78,11 +78,11 @@ The requirements to follow the exercises in this repository are...
 
 * #### [Exercise 3 - Explore Kyma Telemetry Features with SAP Cloud Logging](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
 
-  * [Exercise 3.0 - Simulate some load](exercises/ex0#exercise-30---simulate-some-load)
-  * [Exercise 3.1 - Access SAP Cloud Logging](exercises/ex0#exercise-31---access-sap-cloud-logging)
-  * [Exercise 3.2 - Explore Logs](exercises/ex0#exercise-32---explore-logs)
-  * [Exercise 3.3 - Explore Metrics](exercises/ex0#exercise-33---explore-metrics)
-  * [Exercise 3.4 - Explore Traces](exercises/ex0#exercise-34---explore-traces)
+  * [Exercise 3.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+  * [Exercise 3.1 - Access SAP Cloud Logging](exercises/ex3#exercise-31---access-sap-cloud-logging)
+  * [Exercise 3.2 - Explore Logs](exercises/ex3#exercise-32---explore-logs)
+  * [Exercise 3.3 - Explore Metrics](exercises/ex3#exercise-33---explore-metrics)
+  * [Exercise 3.4 - Explore Traces](exercises/ex3#exercise-34---explore-traces)
 
 
 Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
