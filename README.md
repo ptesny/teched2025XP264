@@ -85,14 +85,16 @@ The requirements to follow the exercises in this repository are...
   * [Exercise 3.4 - Explore Traces](exercises/ex3#exercise-34---explore-traces)
 
 
-* #### [Exercise T1 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
+* #### [Exercise T1 - Enable Transparent Proxy Kyma Module (optional)](exercises/exT1#exercise-t1---enable-transparent-proxy-kyma-module)
 
-  * [Exercise T1.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+  * [Exercise T1.1 - Navigate To The Kyma Dashboard](exercises/exT1#exercise-t11-navigate-to-the-kyma-dashboard)
+  * [Exercise T1.2 - Enable Transparent Proxy Module](exercises/exT1#exercise-t12-enable-transparent-proxy-module)
+  * [Exercise T1.3 - Explore What Changed In The Kyma Instance](exercises/exT1#exercise-t12-explore-what-changed-in-the-kyma-instance)
 
 
 * #### [Exercise T2 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
 
-  * [Exercise T2.0 - Simulate some load](exercises/ex3#exercise-30---simulate-some-load)
+  * [Exercise T2.0 - Simulate some load](exercises/exT1#exercise-t11-navigate-to-the-kyma-dashboard)
 
 * #### [Exercise T3 - Enable Transparent Proxy Kyma Module](exercises/ex3#exercise-3---exploring-kyma-telemetry-with-sap-cloud-logging)
 
