@@ -21,14 +21,13 @@ Once completed, we would navigate to SAP Cloud Logging to explore the three pill
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href=""><img class="aligncenter" src="./assets/telemetry-cls-discover-logs-0.png" alt="" height="600"/></a></h1>
+<h1><a href=""><img class="aligncenter" src="./assets/telemetry-cls-discover-logs-0.png" alt="access-cls" height="600"/></a></h1>
 </div>
 </td>
 </tr>
 </tbody>
 </table> 
 
-![access-cls](./assets/telemetry-cls-discover-logs-0.png)
 
 ### Explore Logs
 
@@ -38,8 +37,35 @@ Once completed, we would navigate to SAP Cloud Logging to explore the three pill
   - In search bar, enter your cluster id to get only logs from your cluster e.g. `c-99567a`
   - Add filters for namespace and app name as shown below
   ![filter](./assets/telemetry-cls-discover-logs-1.png)
+
+<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<tbody>
+<tr style="height: 193px;">
+<td style="width: 71.6%; height: 193px;">
+<div>
+<h1><a href=""><img class="aligncenter" src="./assets/telemetry-cls-discover-logs-1.png" alt="filter" height="600"/></a></h1>
+</div>
+</td>
+</tr>
+</tbody>
+</table> 
+
+
 - Open any one of the log entries to see the details.
   ![log-details](./assets/telemetry-cls-discover-logs-2.png)
+
+<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<tbody>
+<tr style="height: 193px;">
+<td style="width: 71.6%; height: 193px;">
+<div>
+<h1><a href=""><img class="aligncenter" src="./assets/telemetry-cls-discover-logs-2.png" alt="log-details" height="600"/></a></h1>
+</div>
+</td>
+</tr>
+</tbody>
+</table> 
+
 - Feel free to explore further
 
 ### Explore Metrics
