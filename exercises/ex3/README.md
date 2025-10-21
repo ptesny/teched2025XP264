@@ -88,6 +88,8 @@ There are some pre-defined dashboards available in SAP Cloud Logging. Let's expl
 </table>   
 
 - Check the overview dashboard. Apply the filters as shown below to narrow down details to your cluster and application
+
+
   ![overview](./assets/telemetry-cls-kyma-overview.png)
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
@@ -103,6 +105,8 @@ There are some pre-defined dashboards available in SAP Cloud Logging. Let's expl
 </table>    
 
 - Similarly check `Four golden signals` and `usage` dashboards
+
+
   ![4-g-s](./assets/telemetry-cls-4-golden-signals.png)
 
 
