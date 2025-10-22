@@ -15,7 +15,10 @@ Kyma Control Plane is a central component that manages the lifecycle of the Kyma
 Currently, the KCP is a single instance deployed in the Google Cloud Platform on top of GKE cluster. The future plan is to have multiple instances of KCP as to be able to support restricted markets and improve scalability.  
 
 ### Kyma Runtime (SKR)  
-Each Kyma Runtime instance is a separate Kubernetes cluster managed by the KCP. Customers can pick and choose which Kyma modules to install on their runtime, based on their specific requirements. The Kyma modules provide additional functionality and services to the runtime environment, such as service mesh integration, serverless computing, eventing, and API gateway. Some of the modules are added by default (istio, api-gateway and btp-operator), while others can be installed on demand.
+Each Kyma Runtime instance is a separate Kubernetes cluster managed by the KCP.  
+Customers can pick and choose which Kyma modules to install on their runtime, based on their specific requirements.  
+The Kyma modules provide additional functionality and services to the runtime environment, such as service mesh integration, serverless computing, telemetry, and API gateway.  
+Some of the modules are added by default (istio, api-gateway and btp-operator), while others can be installed on request.
 
   * Kyma Runtime (SKR) architecture diagram 
 
