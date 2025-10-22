@@ -50,7 +50,7 @@ Each Kyma Runtime instance is a separate Kubernetes cluster managed by the KCP. 
 </table>   
 
 
-## Exercise 1.2 - Blind date. Explore Kyma with the ready made CI/CD workflows
+## Exercise 1.2 - A blind date. Explore Kyma with the ready made CI/CD workflows
 
 One does always need to climb the mountain of the onboarding documentation?  
 Not necessarily.  
@@ -267,67 +267,7 @@ kyma alpha diagnose -f json | jq '.nodes[] | tojson'
 
 After completing these steps you will have...
 
-1.	Enter this code.
-```
-apiVersion: gateway.kyma-project.io/v2
-kind: APIRule
-metadata:
 
-  name: httpbin-xp264-050
-  namespace: xp264-050
-
-spec:
-  gateway: kyma-system/kyma-gateway
-  hosts:
-    - httpbin-xp264-050
-  rules:
-    - methods:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - PATCH
-      noAuth: true
-      path: /*
-  service:
-    name: httpbin-xp264-050
-    namespace: xp264-050
-    port: 80
-  timeout: 300
-
-```
-
-duplicate it to
-
-```
-apiVersion: gateway.kyma-project.io/v2
-kind: APIRule
-metadata:
-
-  name: httpbin-xp264-050-aws-route53-dns
-  namespace: xp264-050
-
-spec:
-  gateway: aws-route53-dns/quovadis-aws-route53-dns-gateway
-  hosts:
-    - httpbin-xp264-050.btp-quovadis-d726db6d.quovadis.kyma.dev.sap
-  rules:
-    - methods:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - PATCH
-      noAuth: true
-      path: /*
-  service:
-    name: httpbin-xp264-050
-    namespace: xp264-050
-    port: 80
-  timeout: 300
-
-
-```
 ## Exercise 1.6 - Accessing other diagnostic information with btp and kubernetes terraform providers
 
 Run the following github action: 
