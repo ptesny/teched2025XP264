@@ -285,6 +285,7 @@ env:
         terraform workspace select ${{ env.RUNTIME_WORKSPACE }}
         export TF_WORKSPACE=${{ env.RUNTIME_WORKSPACE }}
         export CONFIG_DIRECTORY=${{ env.CONFIG_DIRECTORY }}
+        export KUBE_CONFIG_PATH=$KUBECONFIG
 
         export BTP_ASSERTION=${{steps.get-github-jwt.outputs.githubJwt}}
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} state list
