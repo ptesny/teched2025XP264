@@ -41,3 +41,13 @@ provider "btp" {
 
 provider "kubernetes" {}
 provider "kubectl" {}
+
+# https://developer.hashicorp.com/terraform/language/backend/kubernetes#configuration-variables
+# https://developer.hashicorp.com/terraform/language/backend/kubernetes#secret_suffix
+# the secret will be named in the format: tfstate-{workspace}-{secret_suffix}
+terraform {
+  backend "kubernetes" {
+    secret_suffix = "teched25"
+    namespace     = "quovadis-btp"
+  }
+}
