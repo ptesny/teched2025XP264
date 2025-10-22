@@ -101,7 +101,12 @@ Good to know:
 </tbody>
 </table> 
 
-    * diagnostic data (namespaced) flow
+- Diagnostic data collection with both Kyma CLI and Terraform providers, namely:
+- SAP BTP, 
+- kubernetes and 
+- kubectl
+
+  * diagnostic data (namespaced) flow
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
@@ -139,7 +144,7 @@ Quoting after [Kyma CLI | SAP Help](https://help.sap.com/docs/btp/sap-business-t
 
 Good to know: 
 - It is already pre-installed on the tech laptops.  
-- It is also out-of-the-box in the automation workflows for this session.
+- It is also available out-of-the-box in the automation workflows for this session.
 
 ```
 kyma version
