@@ -77,7 +77,7 @@ For instance:
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href="">
+<h1><a href="https://dashboard.kyma.cloud.sap/?kubeconfigID=79EB720B-2C16-4A7E-AA7F-108C4E3B7E98">
 <p float="left">
   <img src="../ex1/images/japan-east--admin.png" width="400" height="600"/>
   <img src="../ex1/images/japan-east--student.png" width="400" height="600"/>
