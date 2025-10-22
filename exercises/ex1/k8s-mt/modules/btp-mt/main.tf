@@ -99,7 +99,7 @@ resource "btp_subaccount_role_collection_assignment" "subaccount_platform_idp_vi
 resource "btp_subaccount_role_collection_assignment" "subaccount_custom_idp_groups" {
   depends_on           = [btp_subaccount_subscription.faas_xp264_mt]
 
-  for_each             = var.subaccount_id == "" ? concat( toset( "${var.admin_groups}" ), toset( "${var.viewer_groups}" ) ) : toset([])
+  for_each             = var.subaccount_id == "" ? toset( concat( "${var.admin_groups}", "${var.viewer_groups}" ) ) : toset([])
   subaccount_id        = data.btp_subaccount.context.id
   role_collection_name = "faas-xp264-049_hc-faas"
   group_name            = each.value
