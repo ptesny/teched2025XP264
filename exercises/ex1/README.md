@@ -105,7 +105,7 @@ For instance:
 <p float="left">
   <img src="../ex1/images/k8s-data-context-student.png" width="400" height="600"/>
   <img src="../ex1/images/k8s-data-context-student-summary.png" width="400" height="600"/> 
-  <img src="../ex1/images/k8s-data-context-student-details.png" width="800" height="600"/> 
+  <img src="../ex1/images/k8s-data-context-student-details.png" height="600"/> 
 </p>
 </a></h1>
 </div>
