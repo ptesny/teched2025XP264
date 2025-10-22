@@ -103,8 +103,9 @@ For instance:
 <div>
 <h1><a href="https://dashboard.kyma.cloud.sap/?kubeconfigID=79EB720B-2C16-4A7E-AA7F-108C4E3B7E98">
 <p float="left">
-  <img src="../ex1/images/k8s-data-context-student.png" width="400" height="800"/>
-  <img src="../ex1/images/k8s-data-context-student-summary.png" width="400" height="800"/> 
+  <img src="../ex1/images/k8s-data-context-student.png" width="400" height="600"/>
+  <img src="../ex1/images/k8s-data-context-student-summary.png" width="400" height="600"/> 
+  <img src="../ex1/images/k8s-data-context-student-details.png" height="800"/> 
 </p>
 </a></h1>
 </div>
