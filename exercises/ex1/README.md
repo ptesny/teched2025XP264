@@ -32,9 +32,10 @@ Each Kyma Runtime instance is a separate Kubernetes cluster managed by the KCP. 
 </table> 
 
 
-## Exercise 1.1 - Easy access to your teched landscape.
+## Exercise 1.1 - Easy access to your teched landscape with SSO.
 
   * To assist you with the discovery and ease the navigation you may use the following dashboard.  
+- Please use your allocated student's credentials to login...
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
