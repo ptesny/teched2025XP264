@@ -309,19 +309,6 @@ env:
 #        name: output_html 
 #        path: output.html # The created file's name is output.html. Name cannot be changed
 
-
-#    - name: json2html
-#      id: json2html
-#      uses: Enovade/json2html@v0.2.3
-#      with:
-#        json: ${{ steps.terraform_output.outputs.kyma_parameters }}
-#    - name: Terraform Results
-#      id: terraform_results
-#      shell: bash
-#      run: |
-#        echo "htmloutput"
-#        echo ${{ steps.json2html.outputs.htmloutput }}
-
 "name": "_k8s-data-context-student"
 "on":
   "workflow_call":
