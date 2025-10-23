@@ -53,11 +53,12 @@ The requirements to follow the exercises in this repository are...
   * Github actions (GHA). You may run the GHA-based exercises direclty from a browser on the laptop from your forked repository.  
   * Alternatively, you may use VSCode on your teched laptop terminal and other plugins you may be familiar with.
 
-  * As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components like 
+  * As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components, for instance: 
    - SAP Cloud Identity Services (SAP IAS), 
    - SAP Cloud Logging, 
    - SAP HANA Cloud,
-   - others.  
+   - ArgoCDaaS.
+   
   * All the SAP Kyma environments have been configured to the same template (via terraform automation).  
 
 
