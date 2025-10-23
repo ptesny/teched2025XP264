@@ -319,7 +319,7 @@ In order to subscribe or to retrieve an existing subscription for your session u
 
 | Run Subscription workflow | Retrieve the subscription URL | Retrieve the consumer tenant URL
 | -------- | ------------- | ----------
-[teched-xp264-mt](../../../../actions/workflows/teched-xp264-mt.yml) | [subscription URL](https://mt-xp264-001-teched-80a5defe.b84edf3.kyma.ondemand.com) | [consumer tenant URL](https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/c1f19148-71f7-4883-9f86-8d5ee7634dec/subaccount/1e722e67-9ec2-46de-a690-9a89e7a066ce)
+[teched-xp264-mt](../../../../actions/workflows/teched-xp264-mt.yml) | [subscription URL](https://mt-xp264-050-teched-21270afd.b84edf3.kyma.ondemand.com) | [consumer tenant URL](https://emea.cockpit.btp.cloud.sap/cockpit?idp=anuk8cmfw.accounts.ondemand.com#/globalaccount/c1f19148-71f7-4883-9f86-8d5ee7634dec/subaccount/71e400a1-dfab-4d6f-a4a3-890ea7ae6eab)
 
 
 
