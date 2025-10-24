@@ -70,14 +70,14 @@ These automations are like fuel to your kubernetes engines and environments
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href=""><img class="aligncenter" src="../ex1/images/engine_fuel_small.jpg" alt="" /></a></h1>
+<h1><a href=""><img class="aligncenter" src="../ex1/images/engine_fuel.jpg" alt="" width="800" /></a></h1>
 </div>
 <div>
 
 ```mermaid
 sequenceDiagram
-    Kyma Region (BTP Cockpit) ->> Admin Worklow (cluster-wide): cluster-wide
-    Kyma Region (BTP Cockpit)-->>Student Workflow (namespaced): namespaced
+    Kyma Region (BTP Cockpit) ->> Admin Worklow (cluster-wide): cluster-wide automation
+    Kyma Region (BTP Cockpit)-->>Student Workflow (namespaced): namespaced auomation
     Kyma Region (BTP Cockpit)--x Data Collection Workflow (namespaced): cluster diagnostic ckeck
     Note left of Kyma Region (BTP Cockpit): Pick a region<br/>and action<br/>of your choice.
 
@@ -95,14 +95,6 @@ sequenceDiagram
 - 👉 Pick a region and action of your choice...
 - 👉 Have fun...
 
-```mermaid
-sequenceDiagram
-    Kyma Region (BTP Cockpit) ->> Admin Worklow (cluster-wide): cluster-wide
-    Kyma Region (BTP Cockpit)-->>Student Workflow (namespaced): namespaced
-    Kyma Region (BTP Cockpit)--x Data Collection Workflow (namespaced): cluster diagnostic ckeck
-    Note left of Kyma Region (BTP Cockpit): Pick a region<br/>and action<br/>of your choice.
-
-```
 
  | Kyma Region (BTP Cockpit) |  Console (dashboard) | Admin Worklow (cluster-wide) | Student Workflow (namespaced)| Data Collection Workflow (namespaced)
  | :---------  | --------- | :--------- | :------- | -----------
