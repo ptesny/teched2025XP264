@@ -63,14 +63,19 @@ this landscape features several pre-configured CI/CD github action workflows and
 👉 Retrieve the key information about the state of the runtime environment... at a glance.  
 👉 Both securely and effortlessly!
 
-These automations are like fuel to your kubernetes engines and environments
+These automations are like fuel to your kubernetes engines and environments.
+
+
+- 👉 Do it yourself...
+- 👉 Pick a region and action of your choice...
+- 👉 Have fun...
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href=""><img class="aligncenter" src="../ex1/images/engine_fuel.jpg" alt="engine_fuel" height="600" /></a></h1>
+<h1><a href=""><img class="aligncenter" src="../ex1/images/engine_fuel.jpg" alt="engine_fuel"  /></a></h1>
 </div>
 <div>
 
@@ -103,9 +108,6 @@ sequenceDiagram
 
 
 
-- 👉 Do it yourself...
-- 👉 Pick a region and action of your choice...
-- 👉 Have fun...
 
 
  | Kyma Region (BTP Cockpit) |  Console (dashboard) | Admin Worklow (cluster-wide) | Student Workflow (namespaced)| Data Collection Workflow (namespaced)
