@@ -84,7 +84,8 @@ This action automatically:
 
 - 🔐 Uses GitHub's OIDC token for secure authentication
 - ⚙️ Sets up your Kubernetes context (kubeconfig)
-- 🚀 Enables you to run kubectl commands in your workflow
+- 🚀 Enables you to run kubectl commands in your workflows
+- 🚀 Enables you to run kyma cli commands in your workflows
 
 **Benefits:**
 
