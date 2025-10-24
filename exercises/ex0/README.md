@@ -64,18 +64,18 @@ Access to the landscape via Easy Navigation dashboard:
 </tbody>
 </table>  
 
-The students can pick and choose any available kyma cluster region environment the following list:
+The taxonomy is the following:
+BTP subaccount/kyma runtime environment --> kyma cluster in the hyperscaler region 
+The students can pick and choose any available kyma cluster region the following list:
 
-| Account Name              | Type        |                                                                                                                                Description |
+| BTP region              | Kyma region        |                                                                                                                                Description |
 | :------------------------ | :---------: | :------------------------------------------------------------------------------------------------------------------------ |
-| us-east               |  US EAST region  | Students runtime context with kyma environment in the us east region         |
-| uk-south                  |  UK SOUTH region | Students runtime contexts with kyma environment in the uk south region         |
-| japan-east                |  JAPAN EAST region | Students runtime contexts with kyma environment in the japan east region         |
-| xp264-00               |  UK SOUTH region  | Students runtime context with kyma environment in the us east region         |
-| xp264-001                  |  EU Central region | Students runtime contexts with kyma environment in the eu central region         |
-| xp264-050                |  JK SOUTH region | Students runtime contexts with kyma environment in the uk south region        |
-
-Please consider tour kyma clusters can be provisioned with Azure but in a regioin (data center) ta
+| us-east (eu20/azure)              |  US EAST region  | Students runtime context with kyma environment in the us east region         |
+| uk-south (eu20/azure)                 |  UK SOUTH region | Students runtime contexts with kyma environment in the uk south region         |
+| japan-east (eu20/azure)               |  JAPAN EAST region | Students runtime contexts with kyma environment in the japan east region         |
+| xp264-00  (eu20/azure)             |  UK SOUTH region  | Students runtime context with kyma environment in the us east region         |
+| xp264-001  (eu10/aws)                |  EU Central region | Students runtime contexts with kyma environment in the eu central region         |
+| xp264-050  (eu20/azure)              |  UK SOUTH region | Students runtime contexts with kyma environment in the uk south region        |
 
 
 Good to know: 
