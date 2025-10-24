@@ -91,7 +91,8 @@ sequenceDiagram
 
 <div>
 
-- The pre-configured CI/CD automation workflows are to be manually triggered. They come in two flavors, namely:
+- The pre-configured CI/CD automation workflows are to be manually triggered. 
+- They come in two flavors, namely:
   * admin (cluster-wide) flow
   * students (namespaced) flow
 
