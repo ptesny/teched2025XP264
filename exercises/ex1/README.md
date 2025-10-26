@@ -173,7 +173,7 @@ config:
 
 flowchart TD
    n1["This is sample label"]
-   n1@{ img: '../landscape/uksouth/kyma-dashboard_url_uksouth.png', w='75', pos="b" }
+   n1@{ img: "../landscape/uksouth/kyma-dashboard_url_uksouth.png", w="75", pos="b" }
 ```
 </p>
 </div>
