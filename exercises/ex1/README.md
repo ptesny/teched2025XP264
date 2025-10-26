@@ -35,7 +35,7 @@ Some of the modules are added by default (istio, api-gateway and btp-operator), 
 </table> 
 
 
-<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<table style="width: 100%; height: 600; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
