@@ -34,7 +34,7 @@ Some of the modules are added by default (istio, api-gateway and btp-operator), 
 </tbody>
 </table> 
 
-
+<!-- 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
@@ -65,17 +65,17 @@ sequenceDiagram
 
     autonumber
     me->>apiSrv: 1. kubectl create -f pod.yaml
-    apiSrv-->>etcd: 2. save new state
+    apiSrv->>etcd: 2. save new state
     cntrlMgr->>apiSrv: 3. check for changes
     sched->>apiSrv: 4. watch for unassigned pods(s)
     apiSrv->>sched: 5. notify about pod w nodename=" "
     sched->>apiSrv: 6. assign pod to node
-    apiSrv-->>etcd: 7. save new state
+    apiSrv->>etcd: 7. save new state
     kubelet->>apiSrv: 8. look for newly assigned pod(s)
     apiSrv->>kubelet: 9. bind pod to node
     kubelet->>container: 10. start container
     kubelet->>apiSrv: 11. update pod status
-    apiSrv-->>etcd: 12. save new state
+    apiSrv->>etcd: 12. save new state
 ```    
 
 </div>
@@ -83,6 +83,8 @@ sequenceDiagram
 </tr>
 </tbody>
 </table> 
+
+--->
 
 ## Exercise 1.1 - Easy access to your teched landscape with SSO.
 
