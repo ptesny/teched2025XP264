@@ -50,7 +50,6 @@ flowchart TD
 ```
 
 </div>
-<hr>
 <div>
 <h1><a href="https://kubernetes.io/docs/concepts/overview/components/"><img class="aligncenter" src="https://kubernetes.io/images/docs/components-of-kubernetes.svg" alt="Kubernetes pod running inside a cluster" height="800"/></a></h1>
 </div>
