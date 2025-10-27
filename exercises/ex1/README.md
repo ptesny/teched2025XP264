@@ -123,6 +123,31 @@ They come in three different flavors, namely as:
 * students workflows (namespaced)   
 * data collection workflows (namespaced).
 
+
+```mermaid
+sequenceDiagram
+  actor me as student
+  participant job as Set up job
+  participant repo as Check out Git repository
+  participant helm as Install helm
+  participant kube as Setup Kube Context
+  participant check as permissions check
+  participant other as other
+
+  Note over repo: checkout repository
+  Note over kube: create kubeconfig with<br/>dynamic credentials
+  Note over check: kubeconfig<br>permissions check
+  Note over other: the other steps<br>may differ based<br>on workflow types
+  autonumber
+  me ->> job: job setup
+  job ->> repo: repo checkout
+  repo ->> helm: install helm
+  helm ->> kube: create kubeconfig
+  kube ->> check: permissions check
+  check ->> other: admin<br>student<br>diagnostics
+
+```
+
 <table style="width: 100%;  border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
