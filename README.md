@@ -20,11 +20,34 @@ All these clusters are managed by a central Kyma Control Plane (KCP) that orches
 
 
 
+```mermaid
+
+flowchart TD
+ subgraph subGraph0["SAP Kyma Runtime"]
+        B["Hyperscaler project"]
+        D["Kyma modules"]
+        C["Gardener Kubernetes cluster"]
+  end
+    B --> C
+    C --> D
+    E["Kyma Control Plane"] <--> subGraph0
+    F["BTP Services"] <--> subGraph0
+
+    style B stroke-width:4px,stroke-dasharray: 0
+    style subGraph0 stroke:#616161
+    click D "https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment"
+
+
+
+
+```
+
+
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
-<div style="height: 600px;">
+<div>
 
 
 ```mermaid
