@@ -153,6 +153,30 @@ graph TD
     click D "https://github.com/marketplace/actions/kubernetes-set-context" _blank
 
 ```
+
+```mermaid
+---
+config:
+  look: classic
+  theme: neutral
+---
+sequenceDiagram
+  actor me as student
+  participant job as Set up job
+  participant repo as Check out Git repository
+  participant helm as Install helm
+  participant kube as Setup Kube Context
+  participant check as permissions check
+  participant other as other
+  autonumber
+  me ->> job: job setup
+  job ->> repo: repo checkout
+  repo ->> helm: install helm
+  helm ->> kube: create kubeconfig with dynamic credentials
+  kube ->> check: kubeconfig permissions check
+  check ->> other: the other steps may differ based on workflow type
+```
+
 </p>
 </div>
 </td>
