@@ -50,7 +50,6 @@ output "egress_ips" {
 #
 data "shell_script" "egress_ips" {
     depends_on = [ 
-        terraform_data.provider_context,
         data.kubernetes_config_map_v1.shoot_info
     ]
 
