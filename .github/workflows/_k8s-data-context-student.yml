@@ -348,9 +348,9 @@ env:
         kyma_parameters=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output -json kyma_parameters | jq -R)
         echo "kyma_parameters=$kyma_parameters" >> $GITHUB_OUTPUT
 
-        kymaruntime_kubeconfig=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output -raw kymaruntime_kubeconfig)
-        echo "kymaruntime_kubeconfig=$kymaruntime_kubeconfig" >> $GITHUB_OUTPUT
-        echo  -e "$kymaruntime_kubeconfig"   
+        kymaruntime_kubeconfig_base64=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output kymaruntime_kubeconfig_base64)
+        echo "kymaruntime_kubeconfig_base64=$kymaruntime_kubeconfig_base64" >> $GITHUB_OUTPUT
+        echo  -e "$kymaruntime_kubeconfig_base64" | base64 -d
 
         ls -al $CONFIG_DIRECTORY
         #cat $CONFIG_DIRECTORY/cis-secret.json
