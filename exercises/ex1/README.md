@@ -136,29 +136,6 @@ They come in three different flavors, namely as:
 config:
   look: classic
   theme: neutral
----  
-graph TD
-    A[Set up job] -- checkout repository --> B
-    B(Check out Git repository) --> C
-    C[Install helm] -- create kubeconfig with dynamic credentials --> D
-    D(Setup Kube Context) -- kubeconfig permissions check --> E
-    E(check permissions) -- the other steps may differ based on workflow type --> F{Other steps}
-    F -->|cluster-wide| G[admin]
-    F -->|namespaced| H[student]
-    F -->|namespaced| I[Diagnostic]    
-
-    click A href "https://docs.github.com/en/actions/get-started/understand-github-actions" _parent
-    click B href "https://github.com/marketplace/actions/checkout" "checkout repository" _blank
-    click C href "https://github.com/marketplace/actions/helm-tool-installer" "Install helm" _blank
-    click D "https://github.com/marketplace/actions/kubernetes-set-context" _blank
-
-```
-
-```mermaid
----
-config:
-  look: classic
-  theme: neutral
 ---
 sequenceDiagram
   actor me as student
