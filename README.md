@@ -30,12 +30,20 @@ All these clusters are managed by a central Kyma Control Plane (KCP) that orches
 <h1><a href="https://kubernetes.io/docs/concepts/overview/components/"><img class="aligncenter" src="https://kubernetes.io/images/docs/components-of-kubernetes.svg" alt="Kubernetes pod running inside a cluster" height="800"/></a></h1>
 
 ```mermaid
-graph TD
-    B[Kyma modules] --> A[SAP Kyma Runtime]
-    C[Gardener Kubernetes cluster] --> B
-    D[Hyperscaler project] --> C
-    E[Kyma Control Plane] --> A
-    F[BTP Services] --> A
+
+flowchart TD
+ subgraph subGraph0["SAP Kyma Runtime"]
+        B["Hyperscaler project"]
+        D["Kyma modules"]
+        C["Gardener Kubernetes cluster"]
+  end
+    B --> C
+    C --> D
+    E["Kyma Control Plane"] <--> subGraph0
+    F["BTP Services"] <--> subGraph0
+
+    style B stroke-width:4px,stroke-dasharray: 0
+
 ```
 
 </p>
