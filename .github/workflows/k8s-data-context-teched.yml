@@ -417,8 +417,18 @@ env:
         echo "$kyma_parameters" >> $GITHUB_OUTPUT
         echo 'EOF' >> $GITHUB_OUTPUT
 
+        kubeconfig_sa=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output -raw kubeconfig-sa)
+        echo 'kubeconfig_sa<<EOF' >> $GITHUB_OUTPUT
+        echo "$kubeconfig_sa" >> $GITHUB_OUTPUT
+        echo 'EOF' >> $GITHUB_OUTPUT
+
+        echo "kubeconfig base64 encoded as string"
+        kymaruntime_kubeconfig_base64=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output kymaruntime_kubeconfig_base64)
+        echo "kymaruntime_kubeconfig_base64=$kymaruntime_kubeconfig_base64" >> $GITHUB_OUTPUT
+
+
         ls -al $CONFIG_DIRECTORY
-        cat $CONFIG_DIRECTORY/cis-secret.json
+        #cat $CONFIG_DIRECTORY/cis-secret.json
 
       env:
         RUNTIME_CONTEXT_WORKSPACE: "runtime-context-${{ inputs.subaccount_name }}-${{steps.cluster_info.outputs.GLOBALACCOUNT}}"
@@ -430,7 +440,14 @@ env:
         echo "${{ steps.terraform_output.outputs.kyma_parameters }}" > ./my-kyma_parameters.yaml
         cat ./my-kyma_parameters.yaml 
 
+        echo "${{ steps.terraform_output.outputs.kymaruntime_kubeconfig_base64 }}" > ./my-kymaruntime_kubeconfig_base64.yaml
+        cat ./my-kymaruntime_kubeconfig_base64.yaml 
 
+        echo "${{ steps.terraform_output.outputs.kubeconfig_sa }}" > ./my-kubeconfig_sa.yaml
+        cat ./my-kubeconfig_sa.yaml
+
+        kubectl get nodes --kubeconfig ./my-kubeconfig_sa.yaml
+        kyma alpha diagnose -f json --kubeconfig ./my-kubeconfig_sa.yaml | jq -r '.metadata' 
 
 #    - name: Convert JSON to HTML Table
 #      uses: Teebra/JSON-to-HTML-table@v2.0.0
