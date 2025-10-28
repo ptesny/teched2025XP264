@@ -5,12 +5,10 @@ You must have a personal github account for this session.
 
 ## Exercise 0.0 - Sign up for a new GitHub account
 
-- 👉 You must be able to fork the repository and activate the github actions at the fork.  
-  This is mandatory in order to be able to follow the exercises in this session!
+- 👉 You must be able to fork the repository and activate the github actions at the fork. This is mandatory in order to be able to follow the exercises in this session!
 
   Thus, you may need a GitHub user.  
-  If you haven't got one yet, please sign up following the instructions below.
-  Othersie go to Exercise 0.1 - Fork the teched2025-XP264 repository.
+  If you haven't got one yet, please sign up following the instructions below. Otherwise, go to the next exercise 0.1
 
 - 👉 Navigate to [GitHub](https://github.com/).
 - 👉 Click **Sign up for GiHhub**.
