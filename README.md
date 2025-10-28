@@ -84,7 +84,8 @@ The requirements to follow the exercises in this repository are...
 
 - For all other exercises which may require a terminal use, you may use the built-in VSCode terminal window.
 
-- As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components, for instance: 
+- As this is a Day-2 operation brief, the entire cloud landscape has been pre-configured with a number of shared components, for instance:  
+-
    🔗 SAP Cloud Identity Services (SAP IAS)  
    🔗 SAP Cloud Logging  
    🔗 SAP HANA Cloud  
