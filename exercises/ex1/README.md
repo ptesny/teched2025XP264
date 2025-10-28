@@ -291,7 +291,8 @@ Explanation. What has happened?
 > - The automated workflows leverage the dynamic OIDC credentials with Github Actions acting as the OIDC token provider in the context of a running job.  
 > - Thus, there is no need to have any static credentials or be compelled to use a vault.  
 > - The implemented mechanism ensures the credentials are rotated automatically which makes it suitable for long running pipelines as well.  
- - In a nutshell, the automation workflows: 
+
+- In a nutshell, the automation workflows: 
   - 🔐 leverage GitHub's OIDC token for secure authentication
   - ⚙️ set up your Kubernetes kubeconfig with single or multiple contexts
   - 🚀 enable you to run kubectl commands in your workflow
