@@ -402,7 +402,7 @@ In a nutshell, Kyma CLI extends the capabilities of the ubiquitous kubectl CLI a
 
 
 Good to know: 
-- It is already pre-installed on the tech laptops and can be used from a terminal window/VSCode integrated terminal
+- It is already pre-installed on the teched laptops and can be used from either a terminal window or VSCode integrated terminal
 - It is also available out-of-the-box in the automation workflows prepared for this session.
 - It is available for [installation](https://github.com/marketplace/actions/setup-kyma-cli) in the github CI/CD pipelines from the [github actions marketplace](https://github.com/marketplace?query=kyma).  
 
@@ -448,8 +448,20 @@ There are two ways to gain access to a kyma cluster in XP264 session landscape, 
 - from a terminal window using the downloaded user OIDC kubeconfig with either `kubectl` or `kyma CLI` and
 - from within a github action workflow and/or terraform automation (preferred way)
 
-We shall capitalize on the student diagnostic github action that provides a service account based kubeconfig as an artifact.
+We shall capitalize on the student diagnostic github action that provides a service account based kubeconfig as an artifact, as follows:
 
+
+<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<tbody>
+<tr style="height: 193px;">
+<td style="width: 71.6%; height: 193px;">
+<div> 
+<h1><a href="https://url.sap/3kf0ol"><img class="aligncenter" src="images/k8s-data-context-artifacts.png" alt="" height="600"/></a></h1>
+</div>
+</td>
+</tr>
+</tbody>
+</table> 
 
 
 The first method requires a kubectl oidc plugin (already pre-installed on the laptops) and cannot be performed in a headless context, for instance from a CI/CD pipeline or workflow.  
