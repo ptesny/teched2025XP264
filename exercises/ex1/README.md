@@ -50,8 +50,7 @@ graph TD
 
 
 > [!IMPORTANT]
-> - With the SAP managed kubernetes the entire kubernetes infrastructure is managed 24/7 by the SAP SRE teams.
-> - That includes kubernetes versions updates, security patches, overall monitoring of the underlying infrastructure, etc.
+> - With the SAP managed kubernetes the entire kubernetes infrastructure is managed 24/7 by the SAP SRE teams. That includes kubernetes versions updates, security patches, overall monitoring of the underlying infrastructure, etc.
 > - Customers can decide themselves to upsize or downsize the kubernetes cluster resources via a change of machine types.
 > - All SAP Kyma kubernetes extensions - the kyma modules are fully managed and supported as well.
 > - Customer have a choice between the fast and the regular channels with regard to the modules.
