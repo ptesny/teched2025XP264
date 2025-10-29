@@ -50,9 +50,9 @@ graph TD
 
 
 > [!IMPORTANT]
-> * With the SAP managed kubernetes the entire kubernetes infrastructure is managed 24/7 by the SAP SRE teams. That includes kubernetes versions updates, security patches, overall monitoring of the underlying infrastructure, etc.  
-> * Customers can decide themselves to upsize or downsize the kubernetes cluster resources via a change of machine types.  
-> * All SAP Kyma kubernetes extensions - the kyma modules are fully managed and supported as well. Customer have a choice between the fast and the regular channels with regard to the modules.  
+> * With the SAP managed kubernetes offering, the entire kubernetes infrastructure is managed 24/7 by the SAP SRE teams. That includes kubernetes versions updates, security patches, overall monitoring of the underlying infrastructure, etc. 
+> * Customers can decide by themselves to upsize or downsize the kubernetes cluster resources via a change of machine types.  In order to streamline to cluster configuration and resources, additional worker pools can be provisioned/deprovisioned as well. These worker pools may feature nodes sizes (machine types) different from the master cluster nodes. GPU worker pools nodes are supported.
+> * All SAP Kyma kubernetes extensions - the kyma modules are fully managed and supported as well. Customer have a choice between the fast and the regular channels with regard to the modules.
 > * The fast channel offer a 14-day trial window before the regular channel modules get promoted.
 > * SAP L1 /L2 /L3 /SRE support teams are there to assist on request with the customers Day-2 operations via SAP support incidents management.
 >
