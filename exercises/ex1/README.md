@@ -10,11 +10,11 @@ Day-2 Operations include: Management, Maintenance, Monitoring, and Optimization
 <td style="width: 71.6%; height: 193px;">
 <div> 
 
-The Kubernetes landscape lifecycle is divided into routine or days, namely:
+The Kubernetes landscape lifecycle is divided into so-called routines or days, namely:
 - Day-0 -- Planning and Design
 - Day-1 -- Configuration and Deployment
 - Day-2 -- Run and Operations with the focus on Observability/Monitoring (with the OpenTelemetry), Security and Governance, Developers experience (automation, CI/CD tools), Storage, High Availability
-  
+
 
 ```mermaid
 ---
@@ -43,15 +43,7 @@ graph TD
     N -- No --> D;
     O --> P(Deploy New Release);
     P --> B;
-    subgraph Routine Tasks
-        direction LR
-        K[Perform Routine Maintenance]
-        K --> Q[Backups & Restores]
-        K --> R[Security Patches & Updates]
-    end
-
 ```
-
 
 </div>
 </td>
