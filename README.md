@@ -81,7 +81,7 @@ flowchart TD
 The requirements to follow the exercises in this repository are...
 
 > [!IMPORTANT]
-> You must be able to fork the repository and activate the github actions at the fork.  This is mandatory for this session!
+> You must be able to fork the repository and activate the github actions at the fork. This is mandatory for this session!  
 > Thus, you may need a GitHub user.  
 > If you haven't got one yet, please [sign-up](exercises/ex0#exercise-00---sign-up-for-a-new-github-account) on GitHub before the workshop or at the very beginning of the session.
 
