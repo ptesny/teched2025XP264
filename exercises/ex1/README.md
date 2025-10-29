@@ -333,32 +333,33 @@ In a nutshell, Kyma CLI extends the capabilities of the ubiquitous kubectl CLI a
 ```
 Kyma-CLI Version: 3.2.0
 ```
+> [!NOTE]
+>
+> 👉 run `kyma -h`
+> ~~~rust
+> kyma -h     
+> Use this command to manage Kyma modules and resources on a cluster.
+>
+> Usage:
+>  kyma [command]
+>
+> Available Commands:
+>  alpha       Groups command prototypes for which the API may still change
+>  app         Manages applications on the Kubernetes cluster
+>  completion  Generate the autocompletion script for the specified shell
+>  function    A set of commands for managing Functions
+>  help        Help about any command
+>  module      Manages Kyma modules
+>  version     Displays the version of Kyma CLI
 
-👉 run kyma -h
-```
-kyma -h     
-Use this command to manage Kyma modules and resources on a cluster.
-
-Usage:
-  kyma [command]
-
-Available Commands:
-  alpha       Groups command prototypes for which the API may still change
-  app         Manages applications on the Kubernetes cluster
-  completion  Generate the autocompletion script for the specified shell
-  function    A set of commands for managing Functions
-  help        Help about any command
-  module      Manages Kyma modules
-  version     Displays the version of Kyma CLI
-
-Flags:
-  -h, --help                    Help for the command
-      --kubeconfig string       Path to the Kyma kubeconfig file
-      --show-extensions-error   Prints a possible error when fetching extensions fails
-      --skip-extensions         Skip fetching extensions from the target Kyma environment
-
-Use "kyma [command] --help" for more information about a command.
-```
+> Flags:
+>  -h, --help                    Help for the command
+>      --kubeconfig string       Path to the Kyma kubeconfig file
+>      --show-extensions-error   Prints a possible error when fetching extensions fails
+>      --skip-extensions         Skip fetching extensions from the target Kyma environment
+>
+> Use "kyma [command] --help" for more information about a command.
+> ~~~
 
 
 - 👉 Please get familiar with the other *kyma cli* [commands](https://github.com/kyma-project/cli/tree/3.2.0/docs/user/gen-docs)... 
@@ -495,9 +496,10 @@ kyma alpha diagnose -f json | jq '.nodes[] | tojson'
 
 Accessing other diagnostic information with btp and kubernetes terraform providers.
 
-THe built-in terraform automation is designed to use the very kyma cluster backend it is run against as its remote backend to preserve the terraform state.  
-That's extremely convient as it allows to explore the gathered information at any time time and have it processed with other tools, etc...
-It could be, for instance, shared with the SAP Kyma support.
+> [!NOTE]
+> The built-in terraform automation is designed to use the very kyma cluster as its remote backend to persist the terraform state.  
+> That's extremely convient as it allows to explore the gathered information at any time time and have it processed with other tools, etc...
+> It could be, for instance, shared with the SAP Kyma support.
 
 
 - 👉 Let's capitalize on the student diagnostic github action that provides a service account based kubeconfig as an artifact, as follows:
