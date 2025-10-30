@@ -267,19 +267,6 @@ env:
         kubectl config current-context
         kubectl config get-contexts
 
-    - "name": "check hpa and keda scale objects"
-      "run": |
-        echo -e "display all hpas and scale objects in the namespace: $NAMESPACE..."
-        kubectl get pod -n $NAMESPACE
-        kubectl get hpa -n $NAMESPACE || true
-
-    # GitHub Action reference: https://github.com/jupyterhub/action-k8s-namespace-report
-#    - name: Kubernetes namespace report
-#      uses: jupyterhub/action-k8s-namespace-report@v1
-#      if: always()
-#      with:
-#       namespace: ${{ env.NAMESPACE }}
-
     - "name": "install kyma cli"
       uses: kyma-project/setup-kyma-cli@v1
       with:
@@ -288,7 +275,7 @@ env:
       "run": |
          kyma -h
          kyma alpha -h
-    - "name": "Diagnose cluster health and configuration."
+    - "name": "get cluster btp subaccount and global account."
       id: cluster_info
       "run": |
         echo "Diagnose cluster health and configuration...."
@@ -302,6 +289,28 @@ env:
 
         echo "GLOBALACCOUNT=$GLOBALACCOUNT" >> $GITHUB_OUTPUT
         echo "DEEPLINK=$DEEPLINK" >> $GITHUB_OUTPUT
+
+
+    - "name": "check for the hpa and keda scale objects"
+      "run": |
+        echo -e "display all hpas and scale objects in the namespace: $NAMESPACE..."
+        kubectl get pod -n $NAMESPACE
+        kubectl get hpa -n $NAMESPACE || true
+        kubectl get hpa faas-srv -n $NAMESPACE || true
+
+    - "name": "scale-out the faas-srv function to min 5 replicas"
+      "run": |
+        echo -e "display all hpas and scale objects in the namespace: $NAMESPACE..."
+        kubectl autoscale function faas-srv -n $NAMESPACE --cpu-percent=50 --min=5 --max=10 || true
+        kubectl get hpa -n $NAMESPACE || true
+        kubectl get hpa faas-srv -n $NAMESPACE || true
+
+    # GitHub Action reference: https://github.com/jupyterhub/action-k8s-namespace-report
+#    - name: Kubernetes namespace report
+#      uses: jupyterhub/action-k8s-namespace-report@v1
+#      if: always()
+#      with:
+#       namespace: ${{ env.NAMESPACE }}
 
 "name": "_k8s-keda-hpa-student"
 "on":
