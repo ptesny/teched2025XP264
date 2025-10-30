@@ -315,7 +315,7 @@ env:
         kubectl delete pod/load-generator -n $NAMESPACE || true
         kubectl wait --for=delete pod/load-generator  --timeout=60s || true
         #kubectl run  -n $NAMESPACE  -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://faas-srv-$NAMESPACE.svc.cluster.local/metrics; done"
-        kubectl run  -n $NAMESPACE  -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://faas-srv-xp264-050.svc.cluster.local/metrics; done"
+        kubectl run  -n $NAMESPACE  -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://faas-srv-xp264-050.svc.cluster.local:80/metrics; done"
 
 
     - "name": "scale back to a single replica."
