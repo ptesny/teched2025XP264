@@ -149,7 +149,7 @@ env:
 
         echo -e "\nwait for function scale out and deployment rollout complete\n"
         kubectl get function faas-srv -n $NAMESPACE -o jsonpath="{.status.conditions[1]}" | jq
-        kubectl wait --for=jsonpath="{.status.conditions[1].status}"=True function faas-srv -n $NAMESPACE --timeout=90s
+        kubectl wait --for=jsonpath="{.status.conditions[1].status}"=True function faas-srv -n $NAMESPACE --timeout=180s
 
         echo "enumerate all the resource in the namespace - it may take quite some time to run"
         kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -l app=faas-srv -n $NAMESPACE
