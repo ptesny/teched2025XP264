@@ -110,7 +110,7 @@ env:
 
     - "name": "scale-out the faas-srv function to min 5 replicas"
       "run": |
-        echo -e "keda autoscale function faas-srv in the namespace: $NAMESPACE..."
+        echo -e "KEAD CPU Trigger scale-up of function faas-srv in the namespace: $NAMESPACE..."
         
         cat <<EOF | kubectl apply -f -
         apiVersion: keda.sh/v1alpha1
@@ -134,9 +134,9 @@ env:
 
         echo "enumerate all the resource in the namespace - it may take quite some time to run"
         kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -l app=faas-srv -n $NAMESPACE
-        echo -e "Wait until KEDA ScaleObject is ready\n"
 
-        echo "show KEDA ScaleObject"
+
+        echo -e "show KEDA ScaleObject:\n"
         kubectl get scaledobject faas-srv -n $NAMESPACE || true
         kubectl get scaledobject faas-srv -n $NAMESPACE -o jsonpath="{.status.conditions[0]}" | jq        
         echo -e "Wait until KEDA ScaleObject is ready\n"
@@ -144,13 +144,13 @@ env:
         echo -e "show KEDA ScaleObject\n"
         kubectl get scaledobject faas-srv -n $NAMESPACE || true
         
-        echo "Wait until KEDA-HPA is ready"
+        echo -e "\nWait until KEDA-HPA is ready\n"
         kubectl get hpa keda-hpa-faas-srv -n $NAMESPACE || true
         kubectl wait --for=condition=ScalingActive hpa keda-hpa-faas-srv -n $NAMESPACE --timeout=90s
         echo "show KEDA-HPA"
         kubectl get hpa keda-hpa-faas-srv -n $NAMESPACE || true
 
-        echo "wait for function scale out and deployment rollout complete"
+        echo -e "\nwait for function scale out and deployment rollout complete\n"
         kubectl get function faas-srv -n $NAMESPACE -o jsonpath="{.status.conditions[1]}" | jq
         kubectl wait --for=jsonpath="{.status.conditions[1].status}"=True function faas-srv -n $NAMESPACE --timeout=90s
 
@@ -161,23 +161,37 @@ env:
 #        kubectl run  -n $NAMESPACE  load-generator --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://faas-srv.xp264-050.svc.cluster.local/metrics; done"
 
 
-#    - "name": "scale back to a single replica."
-      # "run": |
-      #   echo "delete hpa"   
-      #   kubectl delete hpa faas-srv -n $NAMESPACE || true
-      #   echo "scale back to a single replica"  
-      #   kubectl autoscale function faas-srv -n $NAMESPACE --cpu='50%' --min=1 --max=1 || true        
-      #   kubectl get hpa faas-srv -n $NAMESPACE || true
-      #   echo "Wait until HPA is ready"
-      #   kubectl wait --for=condition=ScalingActive hpa faas-srv -n $NAMESPACE --timeout=60s     
-      #   kubectl get hpa faas-srv -n $NAMESPACE || true
-      #   kubectl get pod -n $NAMESPACE  
+    - "name": "scale back to a single replica."
+      "run": |
+        echo -e "KEAD CPU Trigger scale-down of function faas-srv in the namespace: $NAMESPACE..."
+        
+        cat <<EOF | kubectl edit -f -
+        apiVersion: keda.sh/v1alpha1
+        kind: ScaledObject
+        metadata:
+         name: faas-srv
+         namespace: xp264-050
+        spec:
+         scaleTargetRef:
+           apiVersion:    serverless.kyma-project.io/v1alpha2
+           kind:          Function
+           name:          faas-srv
+         minReplicaCount:  1
+         maxReplicaCount:  1
+         triggers:
+         - type: cpu
+           metricType: Utilization
+           metadata:
+             value: "50"
+        EOF
 
-      #   echo "get rid of hpa"   
-      #   kubectl delete hpa faas-srv -n $NAMESPACE || true
-      #   kubectl get hpa faas-srv -n $NAMESPACE || true
-      #   echo "display all pods in the namespace: $NAMESPACE..."
-      #   kubectl get pod -n $NAMESPACE        
+        echo -e "show KEDA ScaleObject:\n"
+        kubectl get scaledobject faas-srv -n $NAMESPACE || true
+        kubectl get scaledobject faas-srv -n $NAMESPACE -o jsonpath="{.status.conditions[0]}" | jq        
+        echo -e "Wait until KEDA ScaleObject is ready\n"
+        kubectl wait --for=jsonpath="{.status.conditions[0].status}"=True scaledobject faas-srv -n $NAMESPACE --timeout=90s
+        echo -e "show KEDA ScaleObject\n"
+        kubectl get scaledobject faas-srv -n $NAMESPACE || true  
 
     # GitHub Action reference: https://github.com/jupyterhub/action-k8s-namespace-report
 #    - name: Kubernetes namespace report
