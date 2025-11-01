@@ -183,6 +183,20 @@ https://url.sap/h4ioc0), in the Chrome browser on the **provided** teched laptop
   * [Exercise 7.2 - Enable Transparent Proxy Module](exercises/ex7#exercise-72-enable-transparent-proxy-module)
   * [Exercise 7.3 - Explore What Changed In The Kyma Instance](exercises/ex7#exercise-72-explore-what-changed-in-the-kyma-instance)
 
+
+## Feedback
+
+<table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
+<tbody>
+<tr style="height: 193px;">
+<td style="width: 71.6%; height: 193px;">
+<div>
+<h1><a href=""><img class="aligncenter" src="/ex0/images/Feedback.jpg" alt="feedback" /></a></h1>
+</div>
+</td>
+</tr>
+</tbody>
+</table>  
 ----------------------------  
 
 ## Additional resources
