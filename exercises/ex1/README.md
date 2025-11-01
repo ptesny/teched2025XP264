@@ -670,83 +670,53 @@ sequenceDiagram
     Note over T,DB: Tenant can now access the application
 ```
 
+
+
 ```mermaid
-graph TD
-    subgraph "Application Layer"
-        APP[Multitenant Application]
-        AUTH[Authentication Layer]
-        TENANT[Tenant Context Manager]
+---
+title: Deployment Architecture
+---
+graph TB
+
+    
+    subgraph "Production Provider"
+        PROD[Production Space]
+        PRODAPP[Provider Application]
+        SAASREG[SaaS Registry]
+        APPREGISTRY[Application Registry]
     end
     
-    subgraph "Data Layer Isolation"
-        subgraph "Schema-based Isolation"
-            DB[(Database)]
-            T1S[Tenant 1 Schema]
-            T2S[Tenant 2 Schema]
-            T3S[Tenant 3 Schema]
+    subgraph "Production Consumer Subaccounts"
+        subgraph "Tenant A"
+            TENA[Tenant A Instance]
+            DBA[Database A]
         end
         
-        subgraph "Container-based Isolation"
-            HDI[HDI Container Service]
-            T1C[Tenant 1 Container]
-            T2C[Tenant 2 Container]
-            T3C[Tenant 3 Container]
+        subgraph "Tenant B"
+            TENB[Tenant B Instance]
+            DBB[Database B]
         end
-    end
+    end    
     
-    subgraph "Service Layer"
-        DEST[Destination Service]
-        CONN[Connectivity Service]
-        XSUAA2[XSUAA Service]
-    end
+    PRODAPP --> SAASREG
+    SAASREG --> TENA
+    SAASREG --> TENB
     
-    APP --> AUTH
-    AUTH --> TENANT
-    TENANT --> DB
-    TENANT --> HDI
-    
-    DB --> T1S
-    DB --> T2S
-    DB --> T3S
-    
-    HDI --> T1C
-    HDI --> T2C
-    HDI --> T3C
-    
-    APP --> DEST
-    APP --> CONN
-    AUTH --> XSUAA2
+    TENA --> DBA
+    TENB --> DBB
     
     %% Styling
-    classDef app fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef data fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef service fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    classDef tenant fill:#fff8e1,stroke:#ef6c00,stroke-width:2px
+    classDef dev fill:#e8f5e8,stroke:#388e3c
+    classDef test fill:#fff3e0,stroke:#f57c00
+    classDef prod fill:#ffebee,stroke:#c62828
+    classDef tenant fill:#e3f2fd,stroke:#1976d2
+    classDef cicd fill:#f3e5f5,stroke:#7b1fa2
     
-    class APP,AUTH,TENANT app
-    class DB,HDI data
-    class DEST,CONN,XSUAA2 service
-    class T1S,T2S,T3S,T1C,T2C,T3C tenant
-```
-
-```mermaid
-graph TD
-    %% Define tenants and applications
-    subgraph "Application Layer"
-        TenantA_User[Tenant A Consumer]
-        TenantB_User[Tenant B Consumer]
-        API_Gateway[API Gateway / Routing]
-    end
-
-    subgraph "Service Layer"
-        Microservice(Microservice A)
-    end
-
-
-    %% Define the data flow
-    TenantA_User -->|Request for Tenant A data| API_Gateway
-    TenantB_User -->|Request for Tenant B data| API_Gateway
-    API_Gateway -->|Route request to service| Microservice
+    class DEV,DEVAPP,DEVDB dev
+    class TEST,TESTAPP,TESTDB test
+    class PROD,PRODAPP,SAASREG,APPREGISTRY prod
+    class TENA,TENB,DBA,DBB tenant
+    class GIT,BUILD,DEPLOY cicd
 
 ```
 
