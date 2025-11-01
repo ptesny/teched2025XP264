@@ -164,7 +164,7 @@ They come in three different flavors, namely as:
 <td style="width: 71.6%; height: 193px;">
 <div>
 👉 Github automation workflows sequence diagrams. Let's have a look at the common building blocks (steps) of a github action workflow
-</hr>
+<hr>
 
 <p float="left">  
 
