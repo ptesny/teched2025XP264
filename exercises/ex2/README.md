@@ -15,7 +15,9 @@
 > [!IMPORTANT]
 > Pre-requisites:
 > - A dedicated Python Function is provided, in every single student namespace, with the replicas value set to 1 to prevent the internal Serverless HPA creation.
-> 👉 Run the provided github actions workflows to experience HPA and KEDA inspect the workflow run log.
+
+
+👉 Run the provided github actions workflows to experience HPA and KEDA inspect the workflow run log.
 
 A dedicated load generator to be run in a separate browser window...  
 - 👉 run the `k8s-hpa-keda-load-generator` workflow
@@ -28,7 +30,7 @@ A dedicated load generator to be run in a separate browser window...
 
 PS. The below steps are for illustration only. 
 
-- step1: nitially deployed serveless python 3.12 function with a single replica....
+- step1: initially deployed serveless python 3.12 function with a single replica....
 - step2: Scale-out to 3 or 5 replicas 
 - step3: After a little while the HPA will be up and running:  
 - step4: scale down from 5 to 2 replicas 
@@ -46,9 +48,6 @@ PS. The below steps are for illustration only.
  | [ k8s-hpa-student](../../../../actions/workflows/k8s-hpa-student.yml)
 
 
-https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-horizontalpodautoscaler-in-kubectl  
-
-https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale  
 
 ## Exercise 2.2 - KEDA
 
@@ -63,7 +62,7 @@ https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscal
 
 
 > [!NOTE]
-> the below is an example of a KEDA ScaledObject with the cpu trigger
+> For illustration only: a KEDA ScaledObject manifest with the cpu trigger
 > ~~~rust
 > cat <<EOF | kubectl apply -f - --kubeconfig ~/.kube/kubeconfig-<shoot_id>.yaml
 > apiVersion: keda.sh/v1alpha1
@@ -151,6 +150,8 @@ As an illustration, the cron-based scaler enables you to:
 > - [Use External Scalers with SAP Kyma](https://kyma-project.io/#/serverless-manager/user/tutorials/01-130-use-external-scalers)
 > - [Keda examples](https://github.com/kyma-project/keda-manager/tree/main/examples)
 > - [SAP BTP, Kyma Runtime: Leveraging KEDA module capabilities for efficient and cost-effective scaling | SAP Blogs](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-kyma-runtime-leveraging-keda-module-capabilities-for-efficient-and/ba-p/13573526)
+> - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-horizontalpodautoscaler-in-kubectl  
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale  
 
 ## Next steps
 
