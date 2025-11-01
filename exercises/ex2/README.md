@@ -10,21 +10,14 @@
 >
 > KEDA ushers in a new era of flexibility and efficiency in autoscaling. It enhances Kubernetes' capacity to support fine-grained autoscaling for event-driven workloads. Leveraging KEDA, you can dynamically scale your deployments from zero to any arbitrary number, contingent on the volume of events they are designed to process.
 
-> [!TIP]
->
-> Additional reading...  
 
-- [KEDA](https://keda.sh/docs/2.18/), the Kubernetes Event-driven Autoscaler.  
-- [Use External Scalers with SAP Kyma](https://kyma-project.io/#/serverless-manager/user/tutorials/01-130-use-external-scalers)
-- [Keda examples](https://github.com/kyma-project/keda-manager/tree/main/examples)
-- [SAP BTP, Kyma Runtime: Leveraging KEDA module capabilities for efficient and cost-effective scaling | SAP Blogs](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-kyma-runtime-leveraging-keda-module-capabilities-for-efficient-and/ba-p/13573526)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Pre-requisites:
-> - A Python Function is provided, in every single student namespace, with the replicas value set to 1 to prevent the internal Serverless HPA creation.
+> - A dedicated Python Function is provided, in every single student namespace, with the replicas value set to 1 to prevent the internal Serverless HPA creation.
 
 
-- 👉 run the `k8s-hpa-keda-load-generator` worflow
+- 👉 run the `k8s-hpa-keda-load-generator` workflow (in a separate browser window)
 - 👉 For the best experience, open the workflow link into into a new window (right click).  
 
  |  k8s HPA-KEDA load generator workflow (namespaced)
@@ -34,10 +27,9 @@
 
 ## Exercise 2.1 - HPA
 
-- 👉 run the `k8s-hpa-student` worflow
+- 👉 run the `k8s-hpa-student` workflow
+- 👉 inspect the `k8s-hpa-student` workflow run log
 - 👉 For the best experience, open workflow links into a separate tab or into a new window (right click).  
-
-
 
 
  |  k8s HPA student workflow (namespaced)
@@ -45,52 +37,20 @@
  | [ k8s-hpa-student](../../../../actions/workflows/k8s-hpa-student.yml)
 
 
-The below steps are for illustration only. Please use the provided github actions workflows instead.
+The below steps are for illustration only. 
+Please use the provided github actions workflows instead and inspect the workflow run log.
 
 - step1:
-Initially deployed serveless python 3.12 function with a single replica....  
-As shown below, no HPA in place yet:  
-
-> [!NOTE]
->```rust
->kubectl get hpa faas-srv  -n xp264-050 
->```
-> `Error from server (NotFound): horizontalpodautoscalers.autoscaling "faas-srv" not found`
-
+Initially deployed serveless python 3.12 function with a single replica.... no HPA in place so far:
 
 - step2:
 Scale-out to 5 replicas 
 
-> [!NOTE]
->```rust
-> kubectl autoscale function faas-srv  -n xp264-050 --cpu-percent=50 --min=5 --max=10
->```
-> `horizontalpodautoscaler.autoscaling/faas-srv autoscaled`
-
-
 - step3:  
-
 After a little while the HPA will be up and running:  
 
-> [!NOTE]
->```rust
-> kubectl get hpa faas-srv  -n xp264-050                             
-> NAME       REFERENCE           TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
-> faas-srv   Function/faas-srv   cpu: <unknown>/50%   5         10        0          11s
->```
->```rust
-> kubectl get hpa faas-srv  -n xp264-050 
-> NAME       REFERENCE           TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-> faas-srv   Function/faas-srv   cpu: 3%/50%   5         10        5          93s
->```
-
 - step4:
-scale down from 5 to 2 replicas by editiong the `horizontalpodautoscaler.autoscaling/faas-srv` resource
-
-```
-kubectl edit hpa faas-srv  -n xp264-050 
-horizontalpodautoscaler.autoscaling/faas-srv edited
-```
+scale down from 5 to 2 replicas 
 
 - step5:
 scale back to a single replica.
@@ -103,7 +63,8 @@ https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscal
 
 ## Exercise 2.2 - KEDA
 
-- 👉 run the `k8s-keda-student` worflow
+- 👉 run the `k8s-keda-student` workflow
+- 👉 inspect the `k8s-keda-student` workflow run log
 - 👉 For the best experience, open workflow links into a separate tab or into a new window (right click).
 
  |  k8s KEDA student workflow (namespaced)
@@ -140,7 +101,8 @@ https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscal
 
 ## Exercise 2.3 - KEDA's Cron-Based Scaler
 
-- 👉 run the `k8s-keda-cron-student` worflow
+- 👉 run the `k8s-keda-cron-student` workflow
+- 👉 inspect the `k8s-keda-cron-student` workflow run log
 - 👉 For the best experience, open workflow links into a separate tab or into a new window (right click).
 
  |  k8s KEDA CRON student workflow (namespaced)
@@ -190,6 +152,16 @@ As an illustration, the cron-based scaler enables you to:
 </tr>
 </tbody>
 </table>
+
+
+> [!NOTE]
+>
+> Additional reading...  
+>
+> - [KEDA](https://keda.sh/docs/2.18/), the Kubernetes Event-driven Autoscaler.  
+> - [Use External Scalers with SAP Kyma](https://kyma-project.io/#/serverless-manager/user/tutorials/01-130-use-external-scalers)
+> - [Keda examples](https://github.com/kyma-project/keda-manager/tree/main/examples)
+> - [SAP BTP, Kyma Runtime: Leveraging KEDA module capabilities for efficient and cost-effective scaling | SAP Blogs](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-kyma-runtime-leveraging-keda-module-capabilities-for-efficient-and/ba-p/13573526)
 
 ## Next steps
 
