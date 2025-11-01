@@ -478,7 +478,7 @@ kyma alpha kubeconfig generate --serviceaccount kyma-cli-sa --clusterrole cluste
 ```
 
 
-```
+> ~~~rust
 apiVersion: v1
 clusters:
 - cluster:
@@ -498,7 +498,7 @@ users:
 - name: kyma-cli-sa
   user:
     token: eyJhbGciOiJSUzI1NiIsImtpZCI6IlRvQlNSVXRhekVNQWpLaE11SF9Ga0lrUUlCTG5ZQUV3dk9wc3Z5czJZR2MifQ.***
-```
+ ~~~
 
 
 ```
