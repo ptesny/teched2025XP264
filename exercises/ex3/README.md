@@ -4,8 +4,10 @@
 
 Lets make some HTTP requests to the Httpbin application previously deployed in the Kyma runtime.
 
-- Run the student workflow from the table below:
+- 👉 Open the Student Workflow (namespaced) from the table below. It will make 10 requests to the Httpbin application.
+- 👉 In order to simulate more load, edit the request count to for instance 100 (one hundred)
 
+- 👉 Once completed, navigate to SAP Cloud Logging to explore the three pillars of Kyma Telemetry: Logs, Metrics and Traces.
 
 > [!TIP]
 > 👉 For the best experience, open workflow links into a separate tab or into a new window (right click).  
@@ -19,11 +21,6 @@ Lets make some HTTP requests to the Httpbin application previously deployed in t
  | [uk-xp264](https://url.sap/ovbfn6) | [<img src="../landscape/uk-xp264/kyma_dashboard_url_uk_xp264.png" width="75" />](https://url.sap/3wchu2 ) | [uk-xp264--admin](../../../../actions/workflows/uk-xp264-teched-76f46b5b-d9ab-486f-8e4f-12e1163af943.yml) | [uk-xp264--xp264](../../../../actions/workflows/uk-xp264-teched-76f46b5b-d9ab-486f-8e4f-12e1163af943-xp264.yml) | [k8s-data-context-student](../../../../actions/workflows/k8s-data-context-student.yml)
 
 
-
-- 👉 Open the Student Workflow (namespaced). It will make 10 requests to the Httpbin application.
-- 👉 You can change the request count if you would like to simulate more load.
-
-- 👉 Once completed, you shall navigate to SAP Cloud Logging to explore the three pillars of Kyma Telemetry: Logs, Metrics and Traces.
 
 ## Exercise 3.1 - Access SAP Cloud Logging
 
@@ -212,10 +209,11 @@ There are some pre-defined dashboards available in SAP Cloud Logging. Let's expl
 </tbody>
 </table>
 
-  >Note: Some Trace spans may be jumbled up
+> [!NOTE]
+> Some Trace spans may be jumbled up
 
 - Feel free to explore further
 
-## Summary
+## Next steps
 
 Continue to - [Exercise 4 - Explore SAP BTP Connectivity Capabilities in Kyma](../ex4/README.md)
