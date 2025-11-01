@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-internal
+
+spec:
+  selector:
+    matchLabels:
+      serverless.kyma-project.io/function-name: faas-srv
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        notPrincipals: ["cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"]

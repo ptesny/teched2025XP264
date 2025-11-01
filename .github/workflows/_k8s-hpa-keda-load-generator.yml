@@ -5,8 +5,8 @@ env:
   "NAMESPACE": "${{ inputs.NAMESPACE }}"  
 
   RUNTIME_ACTION: "apply"
-  CONFIG_DIRECTORY: "./exercises/ex1/k8s-data/"
-  PATH_TO_TFSCRIPT: "./exercises/ex1/k8s-data/"  
+  CONFIG_DIRECTORY: "./exercises/ex2/k8s/"
+  PATH_TO_TFSCRIPT: "./exercises/ex2/k8s/"  
 
 "jobs":
   "apply-manifest":
@@ -78,6 +78,7 @@ env:
 
     - "name": "Increase the load"
       "run": |
+        kubectl -n $NAMESPACE apply -f ${{ env.CONFIG_DIRECTORY}}/allow-internal.yaml
         kubectl delete pod/load-generator -n $NAMESPACE --ignore-not-found
         kubectl wait --for=delete pod/load-generator  --timeout=60s
         kubectl run  -n $NAMESPACE -i load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://faas-srv.$NAMESPACE.svc.cluster.local/metrics; done"

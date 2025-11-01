@@ -5,8 +5,8 @@ env:
   "NAMESPACE": "${{ inputs.NAMESPACE }}"  
 
   RUNTIME_ACTION: "apply"
-  CONFIG_DIRECTORY: "./exercises/ex1/k8s-data/"
-  PATH_TO_TFSCRIPT: "./exercises/ex1/k8s-data/"  
+  CONFIG_DIRECTORY: "./exercises/ex2/k8s/"
+  PATH_TO_TFSCRIPT: "./exercises/ex2/k8s/"
 
 "jobs":
   "apply-manifest":
