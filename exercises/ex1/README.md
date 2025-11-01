@@ -424,6 +424,7 @@ Practice:
 > ............
 > }
 > ~~~
+> - 👉 run and explore `kyma alpha diagnose -f json | jq '.nodes[] | tojson'`
 
 > [!TIP]
 >  * Let's use the above information to build the deep link to the BTP subaccount with the kyma runtime environment.  
@@ -431,19 +432,14 @@ Practice:
 >  * Goto the [landscape dashboard](https://url.sap/3kf0ol) and choose the right environment...
 >  * Scramble the kyma runtime environment with the BTP Provisioning Service REST APIs
 
-```
-kyma alpha diagnose -f json | jq '.nodes[] | tojson'
 
-```
-
-- 👉 Please get familiar with the other *kyma cli* [commands](https://github.com/kyma-project/cli/tree/3.2.0/docs/user/gen-docs)... 
+- 👉 Last but not least, get familiar with the other *kyma cli* [commands](https://github.com/kyma-project/cli/tree/3.2.0/docs/user/gen-docs)... 
 
 ## Exercise 1.4 - Fire-fighter access to your kyma cluster
 
 There are two ways to gain access to a kyma cluster in XP264 session landscape, namely:
 - from a terminal window using the downloaded user OIDC kubeconfig with either `kubectl` and/or `kyma CLI`
 - from within a github action diagnostic workflow with the embeded terraform automation (the preferred way)
-
 
 
 The first method requires a kubectl oidc plugin (already pre-installed on the laptops) and cannot be performed in a headless context, for instance from a CI/CD pipeline or workflow.  
@@ -682,42 +678,8 @@ commands will detect it and remind you to do so if necessary.
 `Switched to workspace "k8s-context-xp264-050-xp264-050".`
 
 
-- 👉 run: `terraform output -json  KymaModules | jq '.[] | { name: .name, version: .version}'`
+- 👉 run and explore: `terraform output -json  KymaModules | jq '.[] | { name: .name, version: .version}'`
 
-```rust
-{
-  "name": "serverless",
-  "version": "1.8.3"
-}
-{
-  "name": "connectivity-proxy",
-  "version": "1.1.2"
-}
-{
-  "name": "keda",
-  "version": "1.8.2"
-}
-{
-  "name": "transparent-proxy",
-  "version": "1.8.7"
-}
-{
-  "name": "telemetry",
-  "version": "1.49.0"
-}
-{
-  "name": "api-gateway",
-  "version": "3.2.3"
-}
-{
-  "name": "istio",
-  "version": "1.21.1"
-}
-{
-  "name": "btp-operator",
-  "version": "1.2.19"
-}
-```
 
 ## Exercise 1.6 - Subscribe to a kyma multitenant application
 
