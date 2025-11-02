@@ -298,7 +298,7 @@ env:
         echo -e "*********** Namespaced access with a new ServiceAccount ********************\n"
         echo -e "\nPermanent and namespaced full admin access\n"
         kyma alpha kubeconfig generate --serviceaccount kyma-cli-sa-permanent --clusterrole cluster-admin --namespace $NAMESPACE --permanent
-        echo -e "\Time-boxed and namespaced full admin access\n"
+        echo -e "\nTime-boxed and namespaced full admin access\n"
         kyma alpha kubeconfig generate --serviceaccount kyma-cli-sa-time-boxed --clusterrole cluster-admin --namespace $NAMESPACE --time 1h  
 
         echo -e "\n*********** Namespaced access with an existing ServiceAccount ********************\n"
@@ -312,8 +312,8 @@ env:
         kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa --clusterrole cluster-admin --namespace $NAMESPACE --cluster-wide --time 2h > $NAMESPACE-sa.yaml
 
 
-        echo -e "List of pods with: $NAMESPACE-sa.yaml"
-        cat ./$NAMESPACE-sa.yaml
+        echo -e "\nList of pods with: $NAMESPACE-sa.yaml\n"
+        #cat ./$NAMESPACE-sa.yaml
         kubectl get pods -n $NAMESPACE --kubeconfig ./$NAMESPACE-sa.yaml
 
     - "name": "Fire-fighter Read-only access"
@@ -321,15 +321,15 @@ env:
         echo -e "*********** Namespaced read-only access ********************\n"
         echo -e "\nPermanent and namespaced read-only access\n"
         kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa-view --clusterrole view --namespace $NAMESPACE --permanent
-        echo -e "\Time-boxed and namespaced read-only access\n"
+        echo -e "\nTime-boxed and namespaced read-only access\n"
         kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa-view-time --clusterrole view --namespace $NAMESPACE --time 1h  
 
         echo -e "*********** Time-boxed, cluster-wide read-only access ********************\n"
         kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa-view-all --clusterrole view --namespace $NAMESPACE --cluster-wide --time 2h > $NAMESPACE-sa-view-all.yaml
 
 
-        echo -e "List of pods with: $NAMESPACE-sa-view-all.yaml"
-        cat ./$NAMESPACE-sa-view-all.yaml
+        echo -e "\nList of pods with: $NAMESPACE-sa-view-all.yaml\n"
+        #cat ./$NAMESPACE-sa-view-all.yaml
         kubectl get pods -n $NAMESPACE --kubeconfig ./$NAMESPACE-sa-view-all.yaml
 
 

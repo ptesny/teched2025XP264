@@ -108,7 +108,7 @@ jobs:
         echo 'CLUSTER_CONTEXT=$CLUSTER_CONTEXT'  >> "$GITHUB_OUTPUT"
 
 
-  collect-diagnostic-data:
+  k8s-fire-fighter-student:
     needs: cluster-context
     strategy:
       max-parallel: 4
