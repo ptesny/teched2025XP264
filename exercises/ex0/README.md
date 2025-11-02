@@ -44,7 +44,10 @@ This is **mandatory** step to be able to run the session exercises which are imp
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_details.png" alt="" /></a></h1>
+<h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_details.png" alt="fork_details" /></a></h1>
+</div>
+<div>
+<h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/activate-gha-workflows.png" alt="activate-gha-workflows" /></a></h1>
 </div>
 </td>
 </tr>
