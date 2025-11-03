@@ -48,6 +48,76 @@ In the home page of the Namespace of your choice, you can see Connectivity secti
 
 ## Exercise 5.4 Explore the results of the creation of the Destination CRs via Kubectl
 
+**Prepare the command line environment**
+<details>
+On your student laptop, you need to download the ```kubeconfig``` YAML file and configure ```kubectl``` to use it, so that you could execute commands against your target Kyma instance.
+
+0.1. Open a new ```Windows PowerShell``` window as Administrator via simply typing ```powershell``` in the ```Search``` feature of Windows, then right click on ```Windows PowerShell``` and select ```Run as administrator```. This is needed for step 0.2.
+
+0.2. Download and install ```krew```. This is needed for step 0.3.
+
+Download ```krew``` from GitHub:
+- GitHub Repository URL: https://github.com/kubernetes-sigs/krew/releases
+- Direct Download link: https://github.com/kubernetes-sigs/krew/releases/download/v0.4.5/krew.exe
+
+Install ```krew``` via the executing the following command in PowerShell:
+```
+.\krew install krew
+```
+
+0.3. Install ```kubelogin``` plugin for the ```kubectl``` tool. This is needed for enabling ```kubectl``` effectively use the technical credentials being part of the ```kubeconfig``` YAML file and your user context for SSO login into the Kyma instance.
+```
+kubectl krew install oidc-login
+```
+
+0.4. Download ```kubeconfig``` YAML file via BTP Cockpit, see [Exercise 1.1 - Easy access to your teched landscape with SSO.](../ex1#exercise-11---easy-access-to-your-teched-landscape-with-sso)
+
+0.5. Set the ```KUBECONFIG``` environment variable
+```
+$env:KUBECONFIG = "C:\Users\<pc-specific-user-here>\Downloads\kubeconfig.yaml"
+```
+0.6. Validate the access to the Kyma instance
+
+Execute the following command and explore the output is not empty and shows cluster details
+```
+kubectl config view
+```
+For example (disclaimer: the below output is intentionally stripped out for simplicity reasons):
+```
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://api.c-13f520f.kyma.ondemand.com
+  name: garden-kyma--c-13f520f-external
+contexts:
+- context:
+    cluster: garden-kyma--c-13f520f-external
+    user: garden-kyma--c-13f520f-external
+  name: garden-kyma--c-13f520f-external
+current-context: garden-kyma--c-13f520f-external
+kind: Config
+preferences: {}
+users:
+- name: garden-kyma--c-13f520f-external
+...
+```
+
+Execute the following command and explore the output:
+```
+kubectl get pods
+```
+The command may initiate browser based login to establish SSO login for the ```kubectl``` tool. Follow the browser to conduct the login, and then go back to the terminal (PowerShell).
+
+Here's an example output:
+```
+NAME                           READY   STATUS    RESTARTS   AGE
+httpbin-app-5958c987d6-7vptn   2/2     Running   0          12d
+```
+</details>
+
+**Now you can continue with the exercise.**
+
 1. Explore Destination CRs via Terminal and Kubectl Command Line Tool
 ```
 kubectl get destinations -n quovadis-btp
