@@ -120,7 +120,7 @@ env:
         kind: ScaledObject
         metadata:
          name: faas-srv
-         namespace: xp264-050
+         namespace: $NAMESPACE
         spec:
          scaleTargetRef:
            apiVersion:    serverless.kyma-project.io/v1alpha2
@@ -177,7 +177,7 @@ env:
         kind: ScaledObject
         metadata:
          name: faas-srv
-         namespace: xp264-050
+         namespace: $NAMESPACE
         spec:
          scaleTargetRef:
            apiVersion:    serverless.kyma-project.io/v1alpha2
