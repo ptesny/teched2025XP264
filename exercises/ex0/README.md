@@ -81,13 +81,14 @@ Access to the solution landscape is provided via the Easy Navigation dashboard.
 
 | BTP region              | Kyma region        |                                                                                                                                Description |
 | :------------------------ | :---------: | :------------------------------------------------------------------------------------------------------------------------ |
-| us-east (eu20/azure)              |  US EAST region  | kyma environment with the cluster in the us east region         |
-| uk-south (eu20/azure)                 |  UK SOUTH region | kyma environment with the cluster in the uk south region         |
 | japan-east (eu20/azure)               |  JAPAN EAST region | kyma environment with the cluster in the japan east region         |
-| xp264-00  (eu20/azure)             |  UK SOUTH region  | kyma environment with the cluster in the uk south region         |
-| xp264-001  (eu10/aws)                |  EU Central region | kyma environment with the cluster in the eu central region         |
+| uk-south (eu20/azure)                 |  UK SOUTH region | kyma environment with the cluster in the uk south region         |
+| xp264-000  (eu20/azure)             |  UK SOUTH region  | kyma environment with the cluster in the uk south region         |
 | xp264-045  (eu20/azure)                |  UK SOUTH region | kyma environment with the cluster in the uk south region         |
 | xp264-050  (eu20/azure)              |  UK SOUTH region | kyma environment with the cluster in the uk south region        |
+| xp264-050  (eu20/azure)              |  UK SOUTH region | kyma environment with the cluster in the uk south region        |
+| xp264-001  (eu10/aws)                |  EU Central region | kyma environment with the cluster in the eu central region         |
+| us-east (eu20/azure)              |  US EAST region  | kyma environment with the cluster in the us east region         |
 
 
 > [!IMPORTANT]
