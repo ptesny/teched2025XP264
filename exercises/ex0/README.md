@@ -47,10 +47,22 @@ You must have a personal github account for this session.
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_details.png" alt="fork_details" /></a></h1>
+
+<!-- <h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_details.png" alt="fork_details" /></a></h1>
 </div>
 <div>
 <h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/activate-gha-workflows.png" alt="activate-gha-workflows" /></a></h1>
+ -->
+
+<p float="left">
+  <a href="https://github.com/SAP-samples/teched2025-XP264">
+  <img src="../ex0/images/fork_details.png" width="500" alt="fork_details" />
+  </a>
+  <a href="https://github.com/SAP-samples/teched2025-XP264">
+  <img src="../ex0/images/activate-gha-workflows.png" width="600" alt="activate-gha-workflows" />
+  </a>
+</p>
+
 </div>
 </td>
 </tr>
@@ -77,7 +89,7 @@ Access to the solution landscape is provided via the [Easy Navigation dashboard]
 
 <p float="left">
   <a href="https://url.sap/3kf0ol">
-  <img src="../ex0/images/site_navigation.png" width="500" alt="site_navigation" />
+  <img src="../ex0/images/site_navigation.png" width="600" alt="site_navigation" />
   </a>
 </p>
 </div>
