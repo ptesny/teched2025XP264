@@ -65,14 +65,21 @@ You must have a personal github account for this session.
 
 Access to the solution landscape is provided via the [Easy Navigation dashboard](https://url.sap/3kf0ol).  
 > [!TIP]
-> 👉 For the best experience, use the rgit click to open the dashboard into a separate tab or into a new window
+> 👉 For the best experience, use the right click to open the dashboard into a separate tab or into a new window
 
 <table style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;" border="1">
 <tbody>
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href="https://url.sap/3kf0ol"><img class="aligncenter" src="../ex0/images/site_navigation.png" alt="site_navigation" height="800"/></a></h1>
+
+<!-- <h1><a href="https://url.sap/3kf0ol"><img class="aligncenter" src="../ex0/images/site_navigation.png" alt="site_navigation" height="800"/></a></h1> -->
+
+<p float="left">
+  <a href="https://url.sap/3kf0ol">
+  <img src="../ex0/images/site_navigation.png" width="500" alt="site_navigation" />
+  </a>
+</p>
 </div>
 </td>
 </tr>
