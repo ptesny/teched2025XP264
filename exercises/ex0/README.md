@@ -247,7 +247,6 @@ graph TB
 > - Each cluster has been configured to the same template with dedicated namespaces for each student.
 > - As this is an academic exercise, the complete user/namespace isolation has not been enforced.
 > 
-> Furthermore:
 > - The students do not have access to the master components of the landscape. 
 > - Any shared component access required for the session is granted via SSO with the links available from the [Easy Navigation site](https://url.sap/3kf0ol).
 
