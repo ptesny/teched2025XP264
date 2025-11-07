@@ -32,7 +32,15 @@ You must have a personal github account for this session.
 <tr style="height: 193px;">
 <td style="width: 71.6%; height: 193px;">
 <div>
-<h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_entry.png" alt="" /></a></h1>
+
+<!-- <h1><a href="https://github.com/SAP-samples/teched2025-XP264"><img class="aligncenter" src="../ex0/images/fork_entry.png" alt="" /></a></h1> -->
+
+<p float="left">
+  <a href="https://github.com/SAP-samples/teched2025-XP264">
+  <img src="../ex0/images/fork_entry.png" width="500" alt="fork_entry" />
+  </a>
+</p>
+
 </div>
 </td>
 </tr>
