@@ -30,7 +30,7 @@ env:
     - "ubuntu-latest"  
     "steps":
     # - name: "setup-k3d"
-    #   uses: rinx/setup-k3d@v0.0.2
+    #   uses: rinx/setup-k3d@v0.0.4
     #   with:
     #     skipClusterCreation: "true"
     - name: "setup-k3d"
