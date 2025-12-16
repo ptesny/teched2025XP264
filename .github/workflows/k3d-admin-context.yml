@@ -19,8 +19,8 @@ env:
   RUNTIME_WORKSPACE: 'k3d-context'
   # PROVIDER_WORKSPACE: "provider-context-${{ github.event.inputs.GLOBALACCOUNT }}" 
 
-  CONFIG_DIRECTORY: "./teched2025XP264/exercises/k3d"
-  PATH_TO_TFSCRIPT: './teched2025XP264/exercises/k3d/'
+  CONFIG_DIRECTORY: "./exercises/k3d"
+  PATH_TO_TFSCRIPT: './exercises/k3d/'
 
   GITHUB_OWNER: "fp-stakeholder-management"
 
