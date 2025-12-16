@@ -117,6 +117,7 @@ env:
         # curl -sk  https://kro-001-httpbin-kro.local.kyma.dev/headers
         # curl -sk  https://kro-010-httpbin-kro.local.kyma.dev/headers
 
+        sleep 100
         kubectl get pods -A
         kubectl get apirules -A
         kubectl get pods -A
