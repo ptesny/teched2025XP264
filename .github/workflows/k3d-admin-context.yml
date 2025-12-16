@@ -1,0 +1,104 @@
+on:
+  workflow_dispatch:
+    inputs:
+      ACTION:
+        description: "setup/destroy k3d context"
+        required: true
+        default: "apply"
+        type: "choice"
+        options:
+          - "apply"
+          - "destroy"
+
+## Add shared Environment Variables across jobs here ##
+env:
+  RUNTIME_ACTION: ${{ inputs.ACTION == 'deploy' && 'apply' || inputs.ACTION }}
+
+  # RUNTIME_CONTEXT_WORKSPACE: "runtime-context-${{ inputs.runtime_context_name }}-${{ github.event.inputs.GLOBALACCOUNT }}"
+  # RUNTIME_WORKSPACE: "k3d-context-${{ inputs.runtime_context_name }}-${{ github.event.inputs.GLOBALACCOUNT }}"
+  RUNTIME_WORKSPACE: 'k3d-context'
+  # PROVIDER_WORKSPACE: "provider-context-${{ github.event.inputs.GLOBALACCOUNT }}" 
+
+  CONFIG_DIRECTORY: "./btp-context/runtime-context/k3d"
+  PATH_TO_TFSCRIPT: './btp-context/runtime-context/k3d/'
+
+  GITHUB_OWNER: "fp-stakeholder-management"
+
+"jobs":
+  "k3d-setup":
+    "runs-on":
+    - "ubuntu-latest"  
+    "steps":
+    - name: "setup-k3d"
+      uses: rinx/setup-k3d@v0.0.2
+      with:
+        skipClusterCreation: "true"
+
+    - "name": "Check out Git repository"
+      "uses": "actions/checkout@v4"
+
+    - "name": "install kyma cli"
+      uses: kyma-project/setup-kyma-cli@v1
+      with:
+        version: latest
+        # token: "${{ secrets.CICD_TOKEN_FOR_TF_MODULES }}"
+        # target-dir: ${{ github.workspace }}/cli
+    
+    - name: Setup Terraform
+      id : setup_terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_wrapper: false
+        terraform_version: latest
+
+    - name: Terraform Init
+      id: terraform_init
+      shell: bash
+      run: |
+        wget -qO- https://ipecho.net/plain ; echo
+
+        export CONFIG_DIRECTORY=${{ env.CONFIG_DIRECTORY }}
+
+        export TF_REGISTRY_CLIENT_TIMEOUT=30s
+        export TF_REGISTRY_DISCOVERY_RETRY=10
+        export TF_STATE_PERSIST_INTERVAL=100 ## https://developer.hashicorp.com/terraform/cli/config/environment-variables#tf_state_persist_interval
+
+        # echo "machine github.com login ${{ env.CICD_REPO_USERNAME_FOR_TF_MODULES }} password ${{ env.CICD_TOKEN_FOR_TF_MODULES }}" > ~/.netrc
+        # cat ~/.netrc
+        # git config --global url.https://github.com/.insteadOf git://github.com/
+        # git config --global advice.detachedHead false
+
+        terraform workspace select -or-create ${{ env.RUNTIME_WORKSPACE }} || echo "Workspace ${{ env.RUNTIME_WORKSPACE }} already exists or cannot be created"
+
+        terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} init -upgrade -no-color
+        export TF_WORKSPACE=${{ env.RUNTIME_WORKSPACE }}
+      # env:
+      #   CICD_TOKEN_FOR_TF_MODULES: ${{ secrets.CICD_TOKEN_FOR_TF_MODULES }}
+      #   CICD_REPO_USERNAME_FOR_TF_MODULES: ${{ vars.CICD_REPO_USERNAME_FOR_TF_MODULES }}
+
+
+    - name: Terraform Apply 
+      id: terraform_apply
+      shell: bash
+      run: |
+        export TF_REGISTRY_CLIENT_TIMEOUT=30s
+        export TF_REGISTRY_DISCOVERY_RETRY=10
+        export TF_STATE_PERSIST_INTERVAL=100
+
+        export TF_WORKSPACE=${{ env.RUNTIME_WORKSPACE }}
+        export CONFIG_DIRECTORY=${{ env.CONFIG_DIRECTORY }}
+
+        export GITHUB_OWNER=${{ env.GITHUB_OWNER }}
+        export GITHUB_TOKEN=${{ secrets.PAT_GITHUB_TOOLS_SAP }}
+
+        # export TF_VAR_runtime_context_workspace=${{ env.RUNTIME_CONTEXT_WORKSPACE }}
+  
+        terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} ${{ env.RUNTIME_ACTION }} \
+        -auto-approve -no-color
+
+
+"name": "k3d-admin-context"
+
+"permissions":
+  "contents": "read"
+  "id-token": "write"
