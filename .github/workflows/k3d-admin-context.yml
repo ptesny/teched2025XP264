@@ -23,6 +23,7 @@ env:
   PATH_TO_TFSCRIPT: './exercises/k3d/'
 
   GITHUB_OWNER: "fp-stakeholder-management"
+  NAMESPACE: kro-010
 
 "jobs":
   "k3d-setup":
@@ -104,6 +105,53 @@ env:
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} ${{ env.RUNTIME_ACTION }} \
         -auto-approve -no-color
 
+      - name: Get cluster info
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          kubectl get nodes
+          echo "current-context:" $(kubectl config current-context)
+
+          curl -k  https://kro-001-httpbin-kro.local.kyma.dev/headers
+
+    - name: Terraform Output # https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#steps-context
+      id: terraform_output
+      shell: bash
+      run: |
+        terraform workspace select ${{ env.RUNTIME_WORKSPACE }}
+        export TF_WORKSPACE=${{ env.RUNTIME_WORKSPACE }}
+
+        #terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} state list
+        terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output
+
+        kyma_kubeconfig=$(terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} output -raw kyma_kubeconfig)
+        echo 'kyma_kubeconfig<<EOF' >> $GITHUB_OUTPUT
+        echo "$kyma_kubeconfig" >> $GITHUB_OUTPUT
+        echo 'EOF' >> $GITHUB_OUTPUT
+
+
+    - "name": "Fire-fighter access"
+      "run": |
+        echo -e "*********** Time-boxed, cluster-wide access ********************\n"
+        kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa --clusterrole cluster-admin --namespace $NAMESPACE --cluster-wide --time 1h > $NAMESPACE-sa.yaml
+
+        echo -e "\nList of pods with: $NAMESPACE-sa.yaml\n"
+        kubectl get pods -n $NAMESPACE --kubeconfig ./$NAMESPACE-sa.yaml
+
+
+        echo "timeboxed_kubeconfig as string"
+        timeboxed_kubeconfig=$(cat ./$NAMESPACE-sa.yaml)
+        echo 'timeboxed_kubeconfig<<EOF' >> $GITHUB_OUTPUT
+        echo "$timeboxed_kubeconfig" >> $GITHUB_OUTPUT
+        echo 'EOF' >> $GITHUB_OUTPUT
+
+    - "name": "Fire-fighter Read-only access"
+      "run": |
+        echo -e "*********** Time-boxed, cluster-wide read-only access ********************\n"
+        kyma alpha kubeconfig generate --serviceaccount $NAMESPACE-sa-view-all --clusterrole view --namespace $NAMESPACE --cluster-wide --time 1h > $NAMESPACE-sa-view-all.yaml
+
+        echo -e "\nList of pods with: $NAMESPACE-sa-view-all.yaml\n"
+        kubectl get pods -n $NAMESPACE --kubeconfig ./$NAMESPACE-sa-view-all.yaml
 
 "name": "k3d-admin-context"
 
