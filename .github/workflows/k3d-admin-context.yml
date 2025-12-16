@@ -112,7 +112,9 @@ env:
         kubectl get nodes
         echo "current-context:" $(kubectl config current-context)
 
-        curl -k  https://kro-001-httpbin-kro.local.kyma.dev/headers
+        kubectl wait pods -n $NAMESPACE --for=condition=ready --timeout=120s
+        curl -sk  https://kro-001-httpbin-kro.local.kyma.dev/headers
+        curl -sk  https://kro-010-httpbin-kro.local.kyma.dev/headers
 
     - name: Terraform Output # https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#steps-context
       id: terraform_output
