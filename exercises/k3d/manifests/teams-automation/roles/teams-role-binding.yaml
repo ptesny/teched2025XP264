@@ -1,0 +1,43 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ${namespace}-clusteradmin
+  namespace: ${namespace}
+subjects:
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_gha}
+
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_gha_boosters}
+
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_gha_teched}
+
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_gha_xp264}
+
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${teched_user_gha_xp264}
+
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${teams_admin}
+
+  %{for user_admin in cluster_admins}
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_admin}
+  %{endfor}
+
+  - kind: ServiceAccount
+    name: ${namespace}-sa
+    namespace: ${namespace}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin

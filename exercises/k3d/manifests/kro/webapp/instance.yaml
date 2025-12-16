@@ -1,0 +1,18 @@
+apiVersion: kro.run/v1alpha1
+kind: WebApp
+metadata:
+  name: ${namespace}-httpbin-kro
+  namespace: ${namespace}
+spec:
+  name: ${namespace}-httpbin-kro
+  namespace: ${namespace}
+  values:
+    image: kennethreitz/httpbin
+    port: 80 # kennethreitz/httpbin default port is 80
+    serviceAccount: ${namespace}-httpbin-kro
+    # replicas: 3
+    apirule:
+      enabled: true
+    allowinternaltraffic:
+      enabled: ${allowinternaltraffic}
+    service: {} # this is needed

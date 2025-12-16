@@ -1,0 +1,26 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name:  xp264-can-view-gateways
+subjects:
+
+  %{for namespace in namespaces}
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${user_gha_xp264}-${namespace}
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${teched_user_gha_xp264}-${namespace}
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: ${namespace}@${teams_admin_domain}
+
+  - kind: ServiceAccount
+    name: ${namespace}-sa
+    namespace: ${namespace}
+  %{endfor}
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: can-view-gateways

@@ -1,0 +1,15 @@
+apiVersion: authentication.gardener.cloud/v1alpha1
+kind: OpenIDConnect
+metadata:
+  labels:
+    github-tools-oidc: ${namespace}
+
+  name: gh-${cluster_id}-${namespace}
+
+spec:
+  clientID: gh-${cluster_id}-${namespace}
+  issuerURL: https://github.tools.sap/_services/token
+  supportedSigningAlgs:
+    - RS256
+  usernameClaim: aud
+  usernamePrefix: 'actions-oidc:'

@@ -1,0 +1,23 @@
+apiVersion: registry-proxy.kyma-project.io/v1alpha1
+kind: Connection
+metadata:
+  name: registry-proxy-${repository}
+  namespace: ${namespace}
+spec:
+  proxy:
+    #url: "http://connectivity-proxy.kyma-system.svc.cluster.local:20003"
+    locationID: ${locationID}
+  target:
+    host:  ${repository}.int.repositories.cloud.sap:443
+    authorization:
+      host: ${repository}.int.repositories.cloud.sap:443
+      # headerSecret: "authSecret"
+  nodePort: ${nodePort} #32123
+  logLevel: debug
+#  resources:
+#    requests:
+#      cpu: "100m"
+#      memory: "128Mi"
+#    limits:
+#      cpu: "200m"
+#      memory: "256Mi"

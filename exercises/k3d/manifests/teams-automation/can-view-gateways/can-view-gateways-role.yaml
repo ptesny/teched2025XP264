@@ -1,0 +1,41 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: can-view-gateways
+  name: can-view-gateways
+rules:
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - gateways
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch  
+- apiGroups:
+  - dns.gardener.cloud
+  resources:
+  - dnsentries
+  - dnsproviders
+  verbs:
+  - get
+  - list
+  - watch    
+- apiGroups:
+  - cert.gardener.cloud
+  resources:
+  - certificates
+  - issuers
+  verbs:
+  - get
+  - list
+  - watch      

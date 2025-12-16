@@ -1,0 +1,15 @@
+apiVersion: authentication.gardener.cloud/v1alpha1
+kind: OpenIDConnect
+metadata:
+  labels:
+    github-oidc: ${namespace}
+
+  name: gh-teched-${cluster_id}-${namespace}
+
+spec:
+  clientID: gh-teched-${cluster_id}-${namespace}
+  issuerURL: https://token.actions.githubusercontent.com
+  supportedSigningAlgs:
+    - RS256
+  usernameClaim: aud
+  usernamePrefix: 'actions-oidc:'

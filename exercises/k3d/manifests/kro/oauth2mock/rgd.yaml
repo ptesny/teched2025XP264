@@ -1,0 +1,100 @@
+apiVersion: kro.run/v1alpha1
+kind: ResourceGraphDefinition
+metadata:
+  name: oauthmock.kro.run
+spec:
+  schema:
+    apiVersion: v1alpha1
+    kind: OauthMock
+    spec:
+      name: string | default=mock-oauth2
+      namespace: string | default=default
+      values:
+        image: string
+        port: integer | default=8000
+        replicas: integer | default=1
+        service:
+          enabled: boolean | default=true
+    status:
+      deploymentConditions: ${deployment.status.conditions}
+      availableReplicas: ${deployment.status.availableReplicas}
+  resources:
+  - id: deployment
+    readyWhen:
+      - ${deployment.spec.replicas == deployment.status.availableReplicas}
+    template:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: ${schema.spec.name}-deployment
+        namespace: ${schema.spec.namespace}
+        labels:
+          app.kubernetes.io/name: ${schema.spec.name}-deployment
+      spec:
+        replicas: ${schema.spec.values.replicas}
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: ${schema.spec.name}-server
+            app: ${schema.spec.name}-server
+        template:
+          metadata:
+            labels:
+              app.kubernetes.io/name: ${schema.spec.name}-server
+              app: ${schema.spec.name}-server
+              sidecar.istio.io/inject: 'false'
+          spec:
+            containers:
+            - name: ${schema.spec.name}-server
+              image: ${schema.spec.values.image}
+              imagePullPolicy: Always
+              env:
+                - name: iss
+                  value: http://mock.token.issuer.kyma.dev
+                - name: PORT
+                  value: "8000"
+              ports:
+                - containerPort: ${schema.spec.values.port}
+                  name: http
+                  protocol: TCP
+            restartPolicy: Always
+
+  - id: service
+    includeWhen:
+    - ${schema.spec.values.service.enabled}  
+    template:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: ${schema.spec.name}-server
+        namespace: ${schema.spec.namespace}
+      spec:
+        type: ClusterIP
+        selector:
+          app: ${schema.spec.name}-server
+        ports:
+        - protocol: TCP
+          port: 80
+          targetPort: http ### ${schema.spec.values.port}
+
+  - id: virtualservice
+    includeWhen:
+    - ${schema.spec.values.service.enabled}  
+    template:
+      apiVersion: networking.istio.io/v1beta1
+      kind: VirtualService
+      metadata:
+        labels:
+          app: ${schema.spec.name}-server
+        name: ${schema.spec.name}-server
+        namespace: ${schema.spec.namespace}
+      spec:
+        gateways:
+          - kyma-system/kyma-gateway
+        hosts:
+          - ${schema.spec.name}.local.kyma.dev
+        http:
+          - route:
+              - destination:
+                  host: ${schema.spec.name}-server.${schema.spec.namespace}.svc.cluster.local
+                  port:
+                    number: 80        

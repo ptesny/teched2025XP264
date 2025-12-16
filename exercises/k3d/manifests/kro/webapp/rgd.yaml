@@ -1,0 +1,215 @@
+apiVersion: kro.run/v1alpha1
+kind: ResourceGraphDefinition
+metadata:
+  name: webapp.kro.run
+spec:
+  schema:
+    apiVersion: v1alpha1
+    kind: WebApp
+    spec:
+      name: string
+      namespace: string | default=default
+      values:
+        image: string | default=nginx
+        port: integer | default=80
+        replicas: integer | default=1
+        service:
+          enabled: boolean | default=true
+        ingress:
+          enabled: boolean | default=false
+        apirule:
+          enabled: boolean | default=true
+        apirulejwt:
+          enabled: boolean | default=true
+        allowinternaltraffic:
+          enabled: boolean | default=false
+        serviceAccount: string | default=default
+    status:
+      deploymentConditions: ${deployment.status.conditions}
+      availableReplicas: ${deployment.status.availableReplicas}
+      # url: ${ingress.status.loadBalancer.ingress[0].hostname}
+      # endpoint: "http://${service.status.loadBalancer.ingress[0].hostname}"
+      # endpoint: "http://${service.status.loadBalancer.ingress[0].ip}"
+  resources:
+  - id: serviceaccount
+    template:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: ${schema.spec.name}
+        namespace: ${schema.spec.namespace}
+
+  - id: deployment
+    readyWhen:
+      - ${deployment.spec.replicas == deployment.status.availableReplicas}
+    template:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: ${schema.spec.name}
+        namespace: ${schema.spec.namespace}
+        labels:
+          app.kubernetes.io/name: ${schema.spec.name}
+      spec:
+        replicas: ${schema.spec.values.replicas}
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: ${schema.spec.name}
+            app: ${schema.spec.name}
+        template:
+          metadata:
+            annotations:
+              sidecar.istio.io/nativeSidecar: 'true'
+            labels:
+              app.kubernetes.io/name: ${schema.spec.name}
+              app: ${schema.spec.name}
+              sidecar.istio.io/inject: 'true'
+          spec:
+            serviceAccountName: ${schema.spec.values.serviceAccount}
+            containers:
+            - name: ${schema.spec.name}
+              image: ${schema.spec.values.image}
+              imagePullPolicy: IfNotPresent
+              ports:
+              - containerPort: ${schema.spec.values.port}
+              # command: ["gunicorn", "--access-logfile", "-", "-b", "[::]:80", "${schema.spec.name}:app"]
+              # resources:
+              #   requests:
+              #     memory: "64Mi"
+              #     cpu: "250m"
+              #   limits:
+              #     memory: "1Gi"
+              #     cpu: "1"
+            restartPolicy: Always
+
+  - id: service
+    includeWhen:
+    - ${schema.spec.values.service.enabled}  
+    template:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: ${deployment.metadata.name}
+        namespace: ${deployment.metadata.namespace}
+      spec:
+        # type: LoadBalancer
+        ipFamilyPolicy: SingleStack
+        ipFamilies:
+          - IPv4
+        selector:
+          app: ${schema.spec.name}
+        
+        ports:
+        - name: http
+          protocol: TCP
+          port: 80
+          targetPort: ${schema.spec.values.port}
+
+
+  - id: ingress
+    includeWhen:
+    - ${schema.spec.values.ingress.enabled}  
+    template:
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: ${deployment.metadata.name}
+        namespace: ${deployment.metadata.namespace}
+        annotations:
+          kubernetes.io/ingress.class: alb
+          alb.ingress.kubernetes.io/scheme: internet-facing
+          alb.ingress.kubernetes.io/target-type: ip
+          alb.ingress.kubernetes.io/healthcheck-path: /health
+          alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+          alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
+      spec:
+        rules:
+        - http:
+            paths:
+            - path: "/"
+              pathType: Prefix
+              backend:
+                service:
+                  name: ${service.metadata.name}
+                  port:
+                    number: 80
+
+  - id: apirule
+    includeWhen:
+    - ${schema.spec.values.apirule.enabled}  
+    template:
+      apiVersion: gateway.kyma-project.io/v2
+      kind: APIRule
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${schema.spec.name}
+        name: ${deployment.metadata.name}
+        namespace: ${deployment.metadata.namespace}
+      spec:
+        gateway: kyma-system/kyma-gateway
+        hosts:
+          - ${schema.spec.name}
+        rules:
+          - methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+            noAuth: true
+            path: /*
+        service:
+          name: ${deployment.metadata.name}
+          port: 80
+          
+  - id: allowinternaltraffic
+    includeWhen:
+    - ${schema.spec.values.apirule.enabled}  
+    - ${schema.spec.values.allowinternaltraffic.enabled} 
+    template:
+      apiVersion: security.istio.io/v1
+      kind: AuthorizationPolicy
+      metadata:
+        name: ${deployment.metadata.name}-allowinternaltraffic
+        namespace: ${deployment.metadata.namespace}
+      spec:
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: ${schema.spec.name}
+        action: ALLOW
+        rules:
+        - from:
+          - source:
+              notPrincipals: ["cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"]          
+
+  - id: apirulejwt
+    includeWhen:
+    - ${schema.spec.values.apirulejwt.enabled}  
+    template:
+      apiVersion: gateway.kyma-project.io/v2
+      kind: APIRule
+      metadata:
+        labels:
+          app.kubernetes.io/name: ${schema.spec.name}-jwt
+        name: ${deployment.metadata.name}-jwt
+        namespace: ${deployment.metadata.namespace}
+      spec:
+        gateway: kyma-system/kyma-gateway
+        hosts:
+          - ${schema.spec.name}-jwt
+        rules:
+          - path: /headers
+            methods: ["GET"]
+            jwt:
+              authentications:
+                - issuer: "http://mock.token.issuer.kyma.dev"
+                  jwksUri: "http://mock-oauth2-server.test.svc.cluster.local/oauth2/certs"
+          - path: /ip
+            methods: ["GET"]
+            jwt:
+              authentications:
+                - issuer: http://different.token.issuer.kyma.dev
+                  jwksUri: "http://mock-oauth2-server.test.svc.cluster.local/oauth2/certs"
+        service:
+          name: ${deployment.metadata.name}
+          port: 80

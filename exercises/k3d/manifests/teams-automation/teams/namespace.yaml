@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ${namespace}
+
+  labels:
+    app.kubernetes.io/name: ${namespace}
+    kubernetes.io/metadata.name: ${namespace}
+    istio-injection: enabled
+
+spec:
+  finalizers:
+    - kubernetes

@@ -1,0 +1,13 @@
+apiVersion: kro.run/v1alpha1
+kind: OauthMock
+metadata:
+  name: mock-oauth2
+  namespace: ${namespace}
+spec:
+  name: mock-oauth2
+  namespace: ${namespace}
+  values:
+    image: europe-central2-docker.pkg.dev/sap-se-cx-kyma-goat/networking-dev-tools/oauth2-mock:latest
+    port: 8000
+    replicas: 1
+    service: {} # this is needed
