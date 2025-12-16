@@ -105,14 +105,14 @@ env:
         terraform -chdir=${{ env.PATH_TO_TFSCRIPT }} ${{ env.RUNTIME_ACTION }} \
         -auto-approve -no-color
 
-      - name: Get cluster info
-        run: |
-          kubectl cluster-info
-          kubectl get pods -n kube-system
-          kubectl get nodes
-          echo "current-context:" $(kubectl config current-context)
+    - name: Get cluster info
+      run: |
+        kubectl cluster-info
+        kubectl get pods -n kube-system
+        kubectl get nodes
+        echo "current-context:" $(kubectl config current-context)
 
-          curl -k  https://kro-001-httpbin-kro.local.kyma.dev/headers
+        curl -k  https://kro-001-httpbin-kro.local.kyma.dev/headers
 
     - name: Terraform Output # https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#steps-context
       id: terraform_output
