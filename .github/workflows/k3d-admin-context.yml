@@ -33,6 +33,12 @@ env:
     #   uses: rinx/setup-k3d@v0.0.2
     #   with:
     #     skipClusterCreation: "true"
+    - name: "setup-k3d"
+      uses: nolar/setup-k3d-k3s@v1
+      with:
+        skip-creation: "true"
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
 
     - "name": "Check out Git repository"
       "uses": "actions/checkout@v4"
@@ -81,8 +87,8 @@ env:
       id: terraform_apply
       shell: bash
       run: |
-        curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh
-        k3d --version
+        # curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh
+        # k3d --version
         export TF_REGISTRY_CLIENT_TIMEOUT=30s
         export TF_REGISTRY_DISCOVERY_RETRY=10
         export TF_STATE_PERSIST_INTERVAL=100
