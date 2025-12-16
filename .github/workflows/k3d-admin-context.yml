@@ -112,7 +112,8 @@ env:
         kubectl get nodes
         echo "current-context:" $(kubectl config current-context)
 
-        kubectl wait pods -n $NAMESPACE --for=condition=ready --timeout=120s
+        kubectl wait pods -n $NAMESPACE -l app=$NAMESPACE-httpbin-kro --for=condition=ready --timeout=120s
+        kubectl wait pods -n kro-001 -l app=kro-001-httpbin-kro --for=condition=ready --timeout=120s
         curl -sk  https://kro-001-httpbin-kro.local.kyma.dev/headers
         curl -sk  https://kro-010-httpbin-kro.local.kyma.dev/headers
 
